@@ -18,6 +18,8 @@
     <!-- JQVMap -->
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('assets/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
@@ -26,23 +28,10 @@
     {{-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}"> --}}
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <style>
-        .main-sidebar {
-            left: auto !important;
-            right: 0 !important;
-        }
-
-        .content-wrapper,
-        .main-footer,
-        .main-header {
-            margin-left: 0 !important;
-            margin-right: 250px !important;
-            /* نفس عرض السايد بار */
-        }
-    </style>
+    
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed sidebar-rtl">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
         @include('include.navbar')
 
