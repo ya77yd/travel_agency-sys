@@ -4,24 +4,36 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateGeneralLedgerEntriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('financialoperations', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('account_currency_id'); // الحساب المرتبط بالعملة
+            $table->unsignedBigInteger('currency_id');         // العملة المستخدمة في هذه المعاملة
+
+            $table->decimal('debit', 18, 2)->default(0);
+            $table->decimal('credit', 18, 2)->default(0);
+
+            $table->string('operation_type');       // نوع المعاملة (فاتورة، سند قبض...)
+            $table->string('operation_reference');  // رقم/رمز المعاملة
+            $table->date('transaction_date');
+            $table->text('description')->nullable();
+
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
+
+            // العلاقات
+            $table->foreign('account_currency_id')->references('id')->on('account_currencies');
+            $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->foreign('created_by')->references('id')->on('users');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('financialoperations');
     }
-};
+}
