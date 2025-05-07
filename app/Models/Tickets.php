@@ -13,6 +13,7 @@ class Tickets extends Model
         'age',
         'price',
         'sale',
+        'currency',
         'created_by',
         'updated_by',
         'created_at', 

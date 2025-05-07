@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->dateTime('travel_date'); // تاريخ السفر
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale', 10, 2); // سعر البيع
+            $table->unsignedBigInteger('currency'); // العملة
+
             $table->unsignedBigInteger('supplier_id'); // رقم المورد
             $table->unsignedBigInteger('customer_id'); // رقم العميل
             $table->string('type'); // نوع التذكرة
@@ -26,6 +28,7 @@ return new class extends Migration {
             $table->timestamps(); // وقت الإنشاء وآخر تحديث
 
             // إضافة العلاقات
+            $table->foreign('currency')->references('id')->on('currencies');
             $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('created_by')->references('id')->on('users');
