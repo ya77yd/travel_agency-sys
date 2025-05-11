@@ -12,7 +12,7 @@ class AirportsController extends Controller
      */
     public function index()
     {
-        //
+        return view('sys_setup.airports');
     }
 
     /**
