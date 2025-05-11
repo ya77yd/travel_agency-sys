@@ -15,13 +15,11 @@ return new class extends Migration {
             $table->string('age'); // العمر
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale', 10, 2); // سعر البيع
-            $table->unsignedBigInteger('currency'); // العملة
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ السجل
             $table->unsignedBigInteger('updated_by')->nullable(); // آخر تحديث بواسطة
             $table->timestamps(); // وقت الإنشاء وآخر تحديث
 
             // العلاقة مع جدول الحجوزات
-            $table->foreign('currency')->references('id')->on('currencies');
             $table->foreign('booking_id')->references('id')->on('bookings');
             // علاقة المستخدمين
             $table->foreign('created_by')->references('id')->on('users');
