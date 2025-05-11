@@ -3,8 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
-    return view('login');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
