@@ -90,6 +90,22 @@
     <!-- overlayScrollbars -->
     <script src="{{ asset('assets/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
+
+
+
+
+<!-- تحميل jQuery -->
+
+<!-- تحميل DataTables -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<!-- تحميل Bootstrap 4 لـ DataTables -->
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
