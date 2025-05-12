@@ -31,19 +31,29 @@
                         </li>
                        
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('airlines')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> تهيئة  الموردين</p>
+                                <p> تهيئة  شركات الطيران</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('suppliers')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  المودرين</p>
+                            </a>
+                        </li>
+
+
+
+
+                        <li class="nav-item">
+                            <a href="{{url('customers')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> تهيئة  العملاء</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('currencies')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> تهيئة  العملات</p>
                             </a>
@@ -53,9 +63,9 @@
                     </ul>
                 </li>
 
-
+{{-- التذاكررررررررررررررررررررررررررررررررر --}}
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="fas fa-money-bill-wave nav-icon"></i>
                         <p>
                              تذاكر الطيران
@@ -64,9 +74,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('bookings')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> تهيئة  العملات</p>
+                                <p> الحجوزات  </p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -83,12 +93,41 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
-                        <p>Level 1</p>
+                
+{{-- الحسااااااابات --}}
+
+<li class="nav-item has-treeview">
+                    <a href="" class="nav-link">
+                        <i class="fas fa-money-bill-wave nav-icon"></i>
+                        <p>
+                             الحسابات 
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('accounts')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> الحسابات  </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('account_currencies')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> اضافة حسابات  </p>
+                            </a>
+                        </li>
+                       <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملات</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+
                 <li class="nav-header">LABELS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
