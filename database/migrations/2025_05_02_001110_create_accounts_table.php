@@ -13,7 +13,7 @@ class CreateAccountsTable extends Migration
             $table->id();
             $table->string('code')->unique();  // كود الحساب
             $table->string('name');  // اسم الحساب
-            $table->foreignId('parent_id')->nullable()->constrained('accounts')->onDelete('cascade');  // الحساب الأب
+            $table->foreignId('parent_id')->nullable()->constrained('accounts');  // الحساب الأب
             $table->string('type');  // نوع الحساب (أصل، خصم، إيراد، مصروف، إلخ)
             $table->integer('level')->default(1);  // مستوى الحساب في الشجرة
             $table->boolean('is_main')->default(false);  // حساب رئيسي أو فرعي

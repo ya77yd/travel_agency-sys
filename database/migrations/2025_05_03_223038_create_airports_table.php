@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('name_ar'); // اسم المطار باللغة العربية
             $table->string('name_en'); // اسم المطار باللغة الإنجليزية
             $table->string('country'); // الدولة
+            $table->string('city'); // المدينة
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ السجل
             $table->unsignedBigInteger('updated_by')->nullable(); // آخر تحديث بواسطة
             $table->timestamps(); // وقت الإنشاء وآخر تحديث

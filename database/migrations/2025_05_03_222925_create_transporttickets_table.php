@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale', 10, 2); // سعر البيع
             $table->unsignedBigInteger('currency'); // العملة
-
             $table->unsignedBigInteger('supplier_id'); // رقم المورد
             $table->unsignedBigInteger('customer_id'); // رقم العميل
             $table->string('type'); // نوع التذكرة

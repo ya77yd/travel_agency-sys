@@ -17,15 +17,13 @@ return new class extends Migration {
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale_price', 10, 2); // سعر البيع
             $table->text('notes')->nullable();
-            $table->foreign('currency')->references('id')->on('currencies');
-
+            $table->unsignedBigInteger('currency'); // العملة
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ الحجز
             $table->unsignedBigInteger('updated_by')->nullable(); // المستخدم الذي قام بالتحديث
             $table->timestamps(); // وقت الإنشاء وآخر تحديث
 
             // إضافة العلاقات
             $table->foreign('currency')->references('id')->on('currencies');
-
             $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('created_by')->references('id')->on('users');
