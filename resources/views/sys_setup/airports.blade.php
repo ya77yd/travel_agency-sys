@@ -13,9 +13,10 @@
          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
       </div>
     </div>
-    <!-- /.card-header -->
-    <form role="form">
+    
+    
     <div class="card-body">
+      <form role="form">
       <div class="row">
             <div class="col-3">
                 <!-- text input -->
