@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_debt')->constrained('accounts');  // الحساب المرتبط بالدفع
-            $table->foreignId('account_credit')->constrained('accounts');  // الحساب المرتبط بالدفع
-            $table->foreignId('currency_id')->constrained('currencies');  // العملة المستخدمة في الدفع
+            $table->unsignedBigInteger('account_debt'); // الحساب المرتبط بالدفع
+            $table->unsignedBigInteger('account_credit');  // الحساب المرتبط بالدفع
+            $table->unsignedBigInteger('currency_id');  // العملة المستخدمة في الدفع
             $table->decimal('amount', 18, 2);  // المبلغ المدفوع
             $table->string('payment_method');  // طريقة الدفع (نقدي، شيك، تحويل بنكي، إلخ)
             $table->string('  details')->nullable();  // تفاصيل الدفع (اختياري)
