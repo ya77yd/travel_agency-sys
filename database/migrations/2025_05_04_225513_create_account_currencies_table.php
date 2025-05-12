@@ -18,8 +18,8 @@ class CreateAccountCurrenciesTable extends Migration
             $table->decimal('creditor', 18, 2)->default(0);  // الرصيد الدائن
             $table->boolean('is_active')->default(true);  // حالة الحساب بالعملة (مفعل أو غير مفعل)
             $table->decimal('limit')->default(0);  // حد الرصيد
-            $table->bigInteger('created_by');  // المستخدم الذي أنشأ السجل
-            $table->bigInteger('updated_by')->nullable();  // المستخدم الذي قام بالتحديث
+            $table->unsignedBigInteger('created_by');  // المستخدم الذي أنشأ السجل
+            $table->unsignedBigInteger('updated_by')->nullable();  // المستخدم الذي قام بالتحديث
             $table->timestamps();  // تاريخ الإنشاء والتحديث
             $table->unique(['account_id', 'currency_id']);  // ضمان عدم تكرار العملة في نفس الحساب
             

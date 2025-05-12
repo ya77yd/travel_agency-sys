@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeneralLedgerEntriesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class CreateGeneralLedgerEntriesTable extends Migration
             $table->decimal('credit', 18, 2)->default(0);
             $table->string('operation_type');       // نوع المعاملة (فاتورة، سند قبض...)
             $table->string('operation_reference');  // رقم/رمز المعاملة
-            $table->date('transaction_date');
+            $table->date('date');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -33,3 +33,4 @@ class CreateGeneralLedgerEntriesTable extends Migration
         Schema::dropIfExists('financialoperations');
     }
 }
+;

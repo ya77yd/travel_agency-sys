@@ -66,9 +66,7 @@
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-            <script src="{{ asset('assets/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 
-        <script src="{{ asset('assets/datatables-bs4/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
     {{-- <script src="plugins/chart.js/Chart.min.js"></script> --}}

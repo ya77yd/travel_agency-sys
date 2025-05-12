@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('supplier_id'); // رقم المورد
             $table->unsignedBigInteger('customer_id'); // رقم الزبون
             $table->string('trip_type'); // نوع الرحلة
-            $table->dateTime('created_at'); // تاريخ الإنشاء
+            $table->dateTime('create'); // تاريخ الإنشاء
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale_price', 10, 2); // سعر البيع
             $table->text('notes')->nullable();
