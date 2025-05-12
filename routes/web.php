@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AirportsController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\Account_currenciesController;
 use App\Http\Controllers\AirlinesController;
 use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\CurrenciesController;
@@ -37,6 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/accounts/edit/{id}', [AccountsController::class, 'edit'])->name('accounts.edit');
     Route::post('/accounts/update/', [AccountsController::class, 'update'])->name('accounts.update');
     Route::get('/accounts/destroy/{id}', [AccountsController::class, 'destroy'])->name('accounts.destroy');
+    // Account Currencies Routes
+    Route::get('/account_currencies', [Account_currenciesController::class, 'index'])->name('account_currencies');
+    Route::post('/account_currencies/store', [Account_currenciesController::class, 'store'])->name('account_currencies.store');
+    Route::get('/account_currencies/edit/{id}', [Account_currenciesController::class, 'edit'])->name('account_currencies.edit');
+    Route::post('/account_currencies/update/', [Account_currenciesController::class, 'update'])->name('account_currencies.update');
+    Route::get('/account_currencies/destroy/{id}', [Account_currenciesController::class, 'destroy'])->name('account_currencies.destroy');
     // Airlines Routes
     Route::get('/airlines', [AirlinesController::class, 'index'])->name('airlines');
     Route::post('/airlines/store', [AirlinesController::class, 'store'])->name('airlines.store');

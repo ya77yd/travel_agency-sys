@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Account_currencies;
 
-use App\Models\Accounts;
 use Illuminate\Http\Request;
 
-class AccountsController extends Controller
+class Account_currenciesController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      */
     public function index()
