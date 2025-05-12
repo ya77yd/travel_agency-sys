@@ -24,7 +24,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('airport_setup')}}" class="nav-link">
+                            <a href="{{url('airports')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>تهيئة المطارات  </p>
                             </a>
@@ -33,9 +33,23 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Level 2</p>
+                                <p> تهيئة  الموردين</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملاء</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملات</p>
+                            </a>
+                        </li>
+
+                        
                     </ul>
                 </li>
 
@@ -44,27 +58,27 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-money-bill-wave nav-icon"></i>
                         <p>
-                             الحسابات
+                             تذاكر الطيران
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Level 3</p>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملات</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Level 3</p>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملات</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                       <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Level 3</p>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> تهيئة  العملات</p>
                             </a>
                         </li>
                     </ul>
