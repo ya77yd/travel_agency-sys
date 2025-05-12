@@ -37,7 +37,7 @@ class CreateAccountsTable extends Migration
         // إضافة الحسابات الرئيسية إذا لم تكن موجودة
         $mainAccounts = [
             [
-                'code' => '1000',
+                'code' => '1',
                 'name' => 'الأصول',
                 'parent_id' => null,
                 'type' => 'أصل',
@@ -48,7 +48,7 @@ class CreateAccountsTable extends Migration
                 'updated_by' => 1,
             ],
             [
-                'code' => '2000',
+                'code' => '2',
                 'name' => 'الخصوم',
                 'parent_id' => null,
                 'type' => 'خصم',
@@ -59,7 +59,7 @@ class CreateAccountsTable extends Migration
                 'updated_by' => 1,
             ],
             [
-                'code' => '3000',
+                'code' => '3',
                 'name' => 'حقوق الملكية',
                 'parent_id' => null,
                 'type' => 'حقوق ملكية',
@@ -70,7 +70,7 @@ class CreateAccountsTable extends Migration
                 'updated_by' => 1,
             ],
             [
-                'code' => '4000',
+                'code' => '4',
                 'name' => 'الإيرادات',
                 'parent_id' => null,
                 'type' => 'إيراد',
@@ -81,7 +81,7 @@ class CreateAccountsTable extends Migration
                 'updated_by' => 1,
             ],
             [
-                'code' => '5000',
+                'code' => '5',
                 'name' => 'المصروفات',
                 'parent_id' => null,
                 'type' => 'مصروف',

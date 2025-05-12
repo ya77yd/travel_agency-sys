@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id(); // معرف فريد للعملة
             $table->string('name'); // اسم العملة
             $table->string('code')->unique(); // رمز العملة (مثل USD، EUR)
-            $table->decimal('exchange_rate', 10, 4); // سعر الصرف
+            $table->decimal('exchange_rate', 10, 2); // سعر الصرف
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ السجل
             $table->unsignedBigInteger('updated_by')->nullable(); // آخر تحديث بواسطة
             $table->timestamps(); // وقت الإنشاء وآخر تحديث
