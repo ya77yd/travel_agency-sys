@@ -80,15 +80,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('tickets')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> تهيئة  العملات</p>
+                                <p> ادارة التذاكر  </p>
                             </a>
                         </li>
                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('transporttickets')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> تهيئة  العملات</p>
+                                <p> النقل البري  </p>
                             </a>
                         </li>
                     </ul>
@@ -118,9 +118,9 @@
                             </a>
                         </li>
                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{url('payments')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> تهيئة  العملات</p>
+                                <p> قيود اليوميه</p>
                             </a>
                         </li>
                     </ul>
