@@ -28,6 +28,15 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by');  // المستخدم الذي أنشأ السجل
             $table->unsignedBigInteger('updated_by')->nullable();  // المستخدم الذي قام بالتحديث
             $table->timestamps();
+
+
+            // إضافة قيود فريدة إذا لزم الأمر
+            // إضافة العلاقات       
+            $table->foreign('created_by')->references('id')->on('users');  // المستخدم الذي أنشأ السجل
+            $table->foreign('updated_by')->references('id')->on('users');  // المستخدم الذي قام بالتحديث
+            $table->foreign('account')->references('id')->on('accounts');  // العلاقة مع جدول الحسابات
+            $table->foreign('amount_currency')->references('id')->on('currencies');  // العلاقة مع جدول العملات
+            $table->foreign('value_currency')->references('id')->on('currencies');  // العلاقة مع جدول العملات
         });
     }
 
