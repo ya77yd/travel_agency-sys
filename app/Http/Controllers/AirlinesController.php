@@ -12,7 +12,9 @@ class AirlinesController extends Controller
      */
     public function index()
     {
-        //
+        return view('sys_setup.airlines', [
+            'airlines' => Airlines::all(),
+        ]);
     }
 
     /**

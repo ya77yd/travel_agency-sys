@@ -79,4 +79,37 @@
     </div>
     @endif
 </section>
+
+<script>
+  $(document).ready(function() {
+    // إذا كانت الرسالة هي نجاح
+    @if(session('success'))
+      swal({
+        type: 'success',
+        title: 'نجاح',
+        text: '{{ session('success') }}',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+    @endif
+
+    // إذا كانت الرسالة هي خطأ
+    @if(session('error'))
+      swal({
+        type: 'error',
+        title: 'خطأ',
+        text: '{{ session('error') }}',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+    @endif
+  });
+</script>
+
+
+
 @endsection

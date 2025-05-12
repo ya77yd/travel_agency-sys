@@ -20,6 +20,9 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('assets/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/select2/css/select2-bootstrap4.min.css') }}">
+<!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-4.min.css') }}">
+
 
     {{-- <link rel="stylesheet" href="{{asset('assets/icheck-bootstrap/icheck-bootstrap.min.css')}}"> --}}
     <!-- JQVMap -->
@@ -89,6 +92,8 @@
     <script src="{{ asset('assets/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
 
+<!-- SweetAlert2 JS -->
+    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
 
 
 
@@ -172,6 +177,29 @@
           });
         })
 
+ $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        type: 'success',
+        title: 'تم اضافة البيانات بنجاح.'
+      })
+    });
+    
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        type: 'error',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    
+  });
 
         
   $(function () {

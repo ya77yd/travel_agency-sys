@@ -56,7 +56,10 @@
             <div class="col-2">
               <div class="form-group">
               
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success swalDefaultSuccess">Submit</button>
+                <button type="button" class="btn btn-success swalDefaultError">
+                  Launch Success Toast
+                </button>
             </div>
           </div>
 
@@ -67,4 +70,8 @@
     
   </div>
 </section>
+
+
+
+
 @endsection
