@@ -24,8 +24,7 @@
                         <div class="form-group">
                             <label for="">كود الشركة</label>
                             <input type="text" id="code" name="code" class="form-control"
-                                placeholder=" ادخل كود مثل:IY  " maxlength="3"
-                                style="text-transform: uppercase;">
+                                placeholder=" ادخل كود مثل:IY  " maxlength="3" style="text-transform: uppercase;">
                         </div>
                     </div>
                     <div class="col-4">
@@ -36,7 +35,7 @@
                                 placeholder="  الدولة">
                         </div>
                     </div>
-                    
+
 
                     <div class="col-md-6">
                         <!-- text input -->
@@ -66,12 +65,12 @@
                 <!-- /.row -->
         </div>
         </form>
-
     </div>
     <div class="card">
         <div class="card-header">
-                <h3 class="card-title" style="text-align: center; font-weight: bold; font-size: 1.5rem; color: #333;">
-                    عرض شركات الطيران
+            <h3 class="card-title-rtl">
+                عرض شركات الطيران
+            </h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -81,10 +80,10 @@
                         <th>الرقم</th>
                         <th>كود الطيران</th>
                         <th>الدولة</th>
-                        <th>الاسم عربي  بالعربي</th>
-                        <th>  الاسم انجليزي</th>
-                     <th>المستخدم  </th>
-                     <th> تعديل  </th>
+                        <th>الاسم عربي بالعربي</th>
+                        <th> الاسم انجليزي</th>
+                        <th>المستخدم </th>
+                        <th> تعديل </th>
 
                         <th>العمليات</th>
                     </tr>
@@ -102,39 +101,36 @@
                                 <td>{{ $airline->name_ar }}</td>
                                 <td>{{ $airline->name_en }}</td>
                                 <td>
-                             @if (isset($users))
-                               @foreach ($users as $user)
-                                   @if ($user->id == $airline->created_by)
-                                       {{ $user->name }}
-                                  
-                                   @endif
-                              @endforeach
-                    
-                          @endif
+                                    @if (isset($users))
+                                        @foreach ($users as $user)
+                                            @if ($user->id == $airline->created_by)
+                                                {{ $user->name }}
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 <td>
                                     @if (isset($users))
                                         @foreach ($users as $user)
                                             @if ($user->id == $airline->updated_by)
                                                 {{ $user->name }}
-                                            
-                                           
                                             @endif
                                         @endforeach
-                                         @else 
-                                            -
+                                    @else
+                                        -
                                     @endif
                                 </td>
                                 <td>
-                                  <a class="btn btn-info btn-sm" href="{{ route('airlines.edit', $airline->id) }}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              تعديل
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="{{ route('airlines.destroy', $airline->id) }}">
-                              <i class="fas fa-trash">
-                              </i>
-                              حذف
-                          </a>
+                                    <a class="btn btn-success btn-sm" href="{{ route('airlines.edit', $airline->id) }}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        تعديل
+                                    </a>
+                                    <a class="btn btn-danger btn-sm"
+                                        href="{{ route('airlines.destroy', $airline->id) }}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        حذف
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

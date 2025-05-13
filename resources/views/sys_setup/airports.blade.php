@@ -4,17 +4,14 @@
     تهيئة المطارات
 @endsection
 <section class="content">
-
     <div class="card card-default">
         <div class="card-header">
+            <h3 class="card-title">اضافة مطار</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
             </div>
-            <h3 class="card-title">اضافة مطار</h3>
         </div>
-
-
         <div class="card-body">
             <form role="form" action="{{ route('airports.store') }}" method="POST">
                 @csrf
@@ -44,7 +41,6 @@
                                 placeholder=" المدينة الذي يقع فيها المطار">
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <!-- text input -->
                         <div class="form-group">
@@ -60,7 +56,6 @@
                             <input type="text" id="name_en" name="name_en" class="form-control"
                                 placeholder=" ادخل اسم المطار بالانجليزي">
                         </div>
-
                     </div>
                     <div class="col-2">
                         <div class="form-group">
@@ -68,16 +63,14 @@
                             <button type="submit" class="btn btn-primary">تأكيد</button>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.row -->
         </div>
         </form>
-
     </div>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">جدول بيانات المطارات</h3>
+            <h3 class="card-title-rtl">جدول بيانات المطارات</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -89,9 +82,8 @@
                         <th>الدولة</th>
                         <th>المدينة</th>
                         <th>الاسم عربي </th>
-                        <th>الاسم انجليزي  </th>
-                         <th> المستخدم </th>
-
+                        <th>الاسم انجليزي </th>
+                        <th> المستخدم </th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
@@ -115,22 +107,19 @@
                                                 {{ $user->name }}
                                             @endif
                                         @endforeach
-                                        
                                     @endif
                                 <td>
-<a class="btn btn-info btn-sm" href="{{ route('airports.edit', $airport->id) }}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              تعديل
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="{{ route('airports.destroy', $airport->id) }}">
-                              <i class="fas fa-trash">
-                              </i>
-                              حذف
-                          </a>
-
-
-                                  
+                                    <a class="btn btn-success btn-sm" href="{{ route('airports.edit', $airport->id) }}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        تعديل
+                                    </a>
+                                    <a class="btn btn-danger btn-sm"
+                                        href="{{ route('airports.destroy', $airport->id) }}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        حذف
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
