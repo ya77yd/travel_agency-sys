@@ -22,7 +22,6 @@ class AirlinesController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -30,7 +29,15 @@ class AirlinesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Airlines::create([
+            'code' => $request->code,
+            'country' => $request->country,
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'created_by' => auth()->id(),
+            'updated_by' => auth()->id(),
+        ]);
+        return redirect()->route('airlines');
     }
 
     /**
@@ -44,24 +51,37 @@ class AirlinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Airlines $airlines)
+    public function edit(Airlines $id)
     {
-        //
+        $airline = Airlines::find($id);
+        return view('sys_setup.edit.airline_edit', compact('airline'));
+    
+    
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Airlines $airlines)
+    public function update(Request $request)
     {
-        //
+       $airline= Airlines::find($request->id);   
+        $airline->update([
+            'code' => $request->code,
+            'country' => $request->country,
+            'name_ar' => $request->name_ar,
+            'name_en' => $request->name_en,
+            'updated_by' => '1',
+        ]);
+        return redirect()->route('airlines');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airlines $airlines)
+    public function destroy(Airlines $id)
     {
-        //
+       Airlines::destroy($id);
+        return redirect()->route('airlines');
     }
 }
