@@ -51,7 +51,7 @@ class AirportsController extends Controller
     public function edit($id)
     {
         $airport = Airports::find($id);
-        return view('sys_setup.airports_edit', compact('airport'));
+        return view('sys_setup.edit.airports_edit', compact('airport'));
     }
 
 
