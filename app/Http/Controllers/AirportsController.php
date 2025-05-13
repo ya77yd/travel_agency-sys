@@ -31,7 +31,7 @@ class AirportsController extends Controller
             'created_by' => auth()->id(),   // أو: auth()->user()->id
             'updated_by' => auth()->id(),   // نفس الإنشاء أول مرة
         ]);
-        return redirect()->route('airports');
+        return redirect()->route('airports')->with('success', 'تم إضافة المطار بنجاح');
     }
 
     /**
@@ -66,7 +66,7 @@ class AirportsController extends Controller
             'name_en' => $request->name_en,
             'updated_by' => auth()->id(),
         ]);
-        return redirect()->route('airports');
+        return redirect()->route('airports')->with('success', 'تم تعديل المطار بنجاح');
     }
 
     /**
@@ -75,6 +75,6 @@ class AirportsController extends Controller
     public function destroy($id)
     {
         Airports::destroy($id);
-        return redirect()->route('airports');
+        return redirect()->route('airports')->with('success', 'تم حذف المطار بنجاح');
     }
 }
