@@ -38,13 +38,10 @@ class Accounts extends Model
             }
         });
         static::updating(function ($account) {
-            if ($account->parent_id) {
+            if ($account->isDirty('parent_id')) {
                 // إذا كان الحساب يحتوي على parent_id (فرعي)، فأنشئ كود الحساب بناءً على parent_code
                 $parent = Accounts::find($account->parent_id);
                 $account->code = $parent->code . str_pad($parent->children->count() + 1, STR_PAD_LEFT);
-            } else {
-                // إذا كان الحساب رئيسيًا، كود الحساب سيكون الرقم 1000 أو ما تراه مناسبًا
-                $account->code = '001';  // كود الحساب الرئيسي
             }
         });
     }

@@ -84,9 +84,14 @@ class AccountsController extends Controller
      */
     public function destroy($id)
     {
-        $account = Accounts::find($id);
+        try {
+             $account = Accounts::find($id);
         $account->delete();
         return redirect()->route('accounts')->with('success', 'تم حذف الحساب بنجاح');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('accounts')->with('error', 'لا يمكن حذف الحساب لأنه مرتبط ببيانات أخرى');
+        }
+       
     }
 
 }
