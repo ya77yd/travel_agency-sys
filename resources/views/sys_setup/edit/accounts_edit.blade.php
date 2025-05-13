@@ -34,7 +34,7 @@
                                     @foreach ($accounts as $a)
                                         @if ($a->id == $account->parent_id)
                                             <option value="{{ $a->id }}" selected>{{ $a->name }}</option>
-                                        @else
+                                        @elseif($a->is_main == 1)
                                             <option value="{{ $a->id }}">{{ $a->name }}</option>
                                         @endif
                                     @endforeach

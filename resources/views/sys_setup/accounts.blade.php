@@ -32,7 +32,9 @@
                                 <select class="form-control" id="parent_id" name="parent_id">
                                     <option value="">اختر الحساب</option>
                                     @foreach ($accounts as $account)
-                                        <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                        @if ($account->is_main == 1)
+                                            <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
