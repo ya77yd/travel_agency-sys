@@ -51,7 +51,7 @@ class AirlinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Airlines $id)
+    public function edit( $id)
     {
         $airline = Airlines::find($id);
         return view('sys_setup.edit.airline_edit', compact('airline'));
@@ -79,7 +79,7 @@ class AirlinesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airlines $id)
+    public function destroy( $id)
     {
        Airlines::destroy($id);
         return redirect()->route('airlines');
