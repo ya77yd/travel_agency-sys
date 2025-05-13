@@ -26,8 +26,7 @@
                             <div class="form-group">
                                 <label for="">كود المطار</label>
                                 <input type="text" id="code" name="code" value="{{ $airport->code }}"
-                                    class="form-control" placeholder=" ادخل كود مكون من 3 احرف " maxlength="3"
-                                    style="text-transform: uppercase;">
+                                    class="form-control" placeholder=" ادخل كود مكون من 3 احرف " maxlength="3">
                             </div>
                         </div>
                         <div class="col-4">

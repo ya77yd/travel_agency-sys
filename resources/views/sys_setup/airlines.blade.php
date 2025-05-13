@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="">كود الشركة</label>
                             <input type="text" id="code" name="code" class="form-control"
-                                placeholder=" ادخل كود مثل:IY  " maxlength="3" style="text-transform: uppercase;">
+                                placeholder=" ادخل كود مثل:IY  " maxlength="3">
                         </div>
                     </div>
                     <div class="col-4">

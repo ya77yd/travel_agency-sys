@@ -1,25 +1,25 @@
 @extends('include.app')
 @section('main')
 @section('title')
-    تهيئة المطارات
+    تهيئة العملات
 @endsection
 <section class="content">
     <div class="card card-default">
         <div class="card-header">
-            <h3 class="card-title">اضافة مطار</h3>
+            <h3 class="card-title">اضافة عملة</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
             </div>
         </div>
         <div class="card-body">
-            <form role="form" action="{{ route('airports.store') }}" method="POST">
+            <form role="form" action="{{ route('currencies.store') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
-                            <label for="">كود المطار</label>
+                            <label for="">كود العملة</label>
                             <input type="text" id="code" name="code" class="form-control"
                                 placeholder=" ادخل كود مكون من 3 احرف " maxlength="3">
                         </div>
@@ -27,33 +27,17 @@
                     <div class="col-4">
                         <!-- text input -->
                         <div class="form-group">
-                            <label>الدولة</label>
-                            <input type="text" id="country" name="country" class="form-control"
-                                placeholder="  الدولة">
+                            <label>اسم العملة</label>
+                            <input type="text" id="name" name="name" class="form-control"
+                                placeholder="  ادخل اسم العملة">
                         </div>
                     </div>
                     <div class="col-5">
                         <!-- text input -->
                         <div class="form-group">
-                            <label>المدينة</label>
-                            <input type="text" id="city" name="city" class="form-control"
-                                placeholder=" المدينة الذي يقع فيها المطار">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>اسم المطار عربي</label>
-                            <input type="text" id="name_ar" name="name_ar" class="form-control"
-                                placeholder="ادخل اسم المطار بالعربي">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>اسم المطار انجليزي</label>
-                            <input type="text" id="name_en" name="name_en" class="form-control"
-                                placeholder=" ادخل اسم المطار بالانجليزي">
+                            <label>سعر الصرف</label>
+                            <input type="float" id="exchange_rate" name="exchange_rate" class="form-control"
+                                placeholder="ادخل سعر الصرف">
                         </div>
                     </div>
                     <div class="col-2">
@@ -69,7 +53,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title-rtl">جدول بيانات المطارات</h3>
+            <h3 class="card-title-rtl">جدول بيانات العملات</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -77,12 +61,9 @@
                 <thead>
                     <tr>
                         <th>الرقم</th>
-                        <th>كود المطار</th>
-                        <th>الدولة</th>
-                        <th>المدينة</th>
-                        <th>الاسم عربي </th>
-                        <th>الاسم انجليزي </th>
-                        <th> المستخدم </th>
+                        <th>كود العملة</th>
+                        <th>اسم العملة</th>
+                        <th>سعر الصرف</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
@@ -90,31 +71,22 @@
                     $count = 1;
                 @endphp
                 <tbody>
-                    @if (isset($airports))
-                        @foreach ($airports as $airport)
+                    @if (isset($currencies))
+                        @foreach ($currencies as $currency)
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>{{ $airport->code }}</td>
-                                <td>{{ $airport->country }}</td>
-                                <td>{{ $airport->city }}</td>
-                                <td>{{ $airport->name_ar }}</td>
-                                <td>{{ $airport->name_en }}</td>
+                                <td>{{ $currency->code }}</td>
+                                <td>{{ $currency->name }}</td>
+                                <td>{{ $currency->exchange_rate }}</td>
                                 <td>
-                                    @if (isset($users))
-                                        @foreach ($users as $user)
-                                            @if ($user->id == $airport->created_by)
-                                                {{ $user->name }}
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                <td>
-                                    <a class="btn btn-success btn-sm" href="{{ route('airports.edit', $airport->id) }}">
+                                    <a class="btn btn-success btn-sm"
+                                        href="{{ route('currencies.edit', $currency->id) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         تعديل
                                     </a>
                                     <a class="btn btn-danger btn-sm"
-                                        href="{{ route('airports.destroy', $airport->id) }}">
+                                        href="{{ route('currencies.destroy', $currency->id) }}">
                                         <i class="fas fa-trash">
                                         </i>
                                         حذف

@@ -26,8 +26,7 @@
                             <div class="form-group">
                                 <label for="">كود الشركة</label>
                                 <input type="text" id="code" name="code" value="{{ $airline->code }}"
-                                    class="form-control" placeholder=" " maxlength="3"
-                                    style="text-transform: uppercase;">
+                                    class="form-control" placeholder=" " maxlength="3">
                             </div>
                         </div>
                         <div class="col-4">
@@ -38,7 +37,7 @@
                                     class="form-control" placeholder="  الدولة">
                             </div>
                         </div>
-                        
+
 
                         <div class="col-md-6">
                             <!-- text input -->
