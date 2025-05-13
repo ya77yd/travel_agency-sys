@@ -106,13 +106,11 @@
                                             لا
                                         @endif
                                     </td>
-                                    <td>
-                                        @if ($account->status == 1)
-                                            مفعل
-                                        @else
-                                            غير مفعل
-                                        @endif
-                                    </td>
+                                    @if ($account->status == 1)
+                                        <td style="color: darkgreen">مفعل</td>
+                                    @else
+                                        <td style="color: red">غير مفعل</td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('accounts.edit', $account->id) }}">
