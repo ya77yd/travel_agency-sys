@@ -145,7 +145,7 @@
                     toast: true,
                     position: 'top',
                     timer: 3000,
-                    background: '#abff4c',
+                    background: '#80FF00',
                     timerProgressBar: true,
                     showConfirmButton: false,
                 });
