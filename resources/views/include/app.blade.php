@@ -45,8 +45,6 @@
             /* مثال فقط إذا bootstrap يؤثر على الأيقونات */
             .swal2-icon.swal2-success {
                 display: flex !important;
-                justify-content: center;
-                align-items: center;
                 background: inherit !important;
                 color: inherit !important;
                 font-size: 0, 8em !important;
@@ -57,8 +55,6 @@
             /* مثال فقط إذا bootstrap يؤثر على الأيقونات */
             .swal2-icon.swal2-error {
                 display: flex !important;
-                justify-content: center;
-                align-items: center;
                 background: inherit !important;
                 color: inherit !important;
                 font-size: 0, 8em !important;
