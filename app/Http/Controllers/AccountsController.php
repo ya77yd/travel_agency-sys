@@ -12,7 +12,8 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        //
+        $accounts = Accounts::all();
+        return view('sys_setup.accounts', compact('accounts'));
     }
 
     /**
@@ -28,7 +29,17 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parent_account = Accounts::where('id', $request->parent_id)->first();
+        Accounts::create([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'type' => $parent_account->type,
+            'level' => $parent_account->level + 1,
+            'is_main' => $request->is_main,
+            'status' => 1,
+            'created_by' => auth()->id(),   // أو: auth()->user()->id
+        ]);
+        return redirect()->route('accounts')->with('success', 'تم إضافة الحساب بنجاح');
     }
 
     /**
@@ -42,24 +53,40 @@ class AccountsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Airlines $airlines)
+    public function edit($id)
     {
-        //
+        $account = Accounts::find($id);
+        $accounts = Accounts::all();
+        return view('sys_setup.edit.accounts_edit', compact('account','accounts'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Airlines $airlines)
+    public function update(Request $request)
     {
-        //
+        $account = Accounts::find($request->id);
+        $parent_account = Accounts::where('id', $request->parent_id)->first();
+        $account->update([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'type' => $parent_account->type,
+            'level' => $parent_account->level + 1,
+            'is_main' => $request->is_main,
+            'status' => $request->status,
+            'updated_by' => auth()->id(),   // أو: auth()->user()->id
+        ]);
+        return redirect()->route('accounts')->with('success', 'تم تعديل الحساب بنجاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airlines $airlines)
+    public function destroy($id)
     {
-        //
+        $account = Accounts::find($id);
+        $account->delete();
+        return redirect()->route('accounts')->with('success', 'تم حذف الحساب بنجاح');
     }
+
 }
