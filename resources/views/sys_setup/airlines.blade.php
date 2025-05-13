@@ -117,11 +117,11 @@
                                             @if ($user->id == $airline->updated_by)
                                                 {{ $user->name }}
                                             
-                                            @else 
-                                            -
+                                           
                                             @endif
                                         @endforeach
-                                        
+                                         @else 
+                                            -
                                     @endif
                                 </td>
                                 <td>

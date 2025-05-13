@@ -73,7 +73,7 @@ class AirlinesController extends Controller
             'country' => $request->country,
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,
-            'updated_by' => '1',
+            'updated_by' => auth()->id(),
         ]);
         return redirect()->route('airlines') ->with('success', 'تم تعديل شركة الطيران بنجاح');
     }
