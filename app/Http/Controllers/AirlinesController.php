@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Airlines;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AirlinesController extends Controller
@@ -14,6 +15,7 @@ class AirlinesController extends Controller
     {
         return view('sys_setup.airlines', [
             'airlines' => Airlines::all(),
+            'users' => User::all(),
         ]);
     }
 
@@ -35,9 +37,9 @@ class AirlinesController extends Controller
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,
             'created_by' => auth()->id(),
-            'updated_by' => auth()->id(),
+            
         ]);
-        return redirect()->route('airlines');
+        return redirect()->route('airlines') ->with('success', 'تم إضافة شركة الطيران بنجاح');
     }
 
     /**
@@ -54,7 +56,7 @@ class AirlinesController extends Controller
     public function edit( $id)
     {
         $airline = Airlines::find($id);
-        return view('sys_setup.edit.airline_edit', compact('airline'));
+        return view('sys_setup.edit.airline_edit', compact('airline')) ;
     
     
         
@@ -73,7 +75,7 @@ class AirlinesController extends Controller
             'name_en' => $request->name_en,
             'updated_by' => '1',
         ]);
-        return redirect()->route('airlines');
+        return redirect()->route('airlines') ->with('success', 'تم تعديل شركة الطيران بنجاح');
     }
 
     /**
@@ -82,6 +84,6 @@ class AirlinesController extends Controller
     public function destroy( $id)
     {
        Airlines::destroy($id);
-        return redirect()->route('airlines');
+        return redirect()->route('airlines') ->with('success', 'تم حذف شركة الطيران بنجاح');
     }
 }

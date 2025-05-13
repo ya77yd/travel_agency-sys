@@ -88,8 +88,10 @@
                         <th>كود المطار</th>
                         <th>الدولة</th>
                         <th>المدينة</th>
-                        <th>اسم المطار بالعربي</th>
-                        <th>اسم المطار بالانجليزي</th>
+                        <th>الاسم عربي </th>
+                        <th>الاسم انجليزي  </th>
+                         <th> المستخدم </th>
+
                         <th>العمليات</th>
                     </tr>
                 </thead>
@@ -107,8 +109,28 @@
                                 <td>{{ $airport->name_ar }}</td>
                                 <td>{{ $airport->name_en }}</td>
                                 <td>
-                                    <a href="{{ route('airports.edit', $airport->id) }}">تعديل</a>
-                                    <a href="{{ route('airports.destroy', $airport->id) }}">حذف</a>
+                                    @if (isset($users))
+                                        @foreach ($users as $user)
+                                            @if ($user->id == $airport->created_by)
+                                                {{ $user->name }}
+                                            @endif
+                                        @endforeach
+                                        
+                                    @endif
+                                <td>
+<a class="btn btn-info btn-sm" href="{{ route('airports.edit', $airport->id) }}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              تعديل
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="{{ route('airports.destroy', $airport->id) }}">
+                              <i class="fas fa-trash">
+                              </i>
+                              حذف
+                          </a>
+
+
+                                  
                                 </td>
                             </tr>
                         @endforeach

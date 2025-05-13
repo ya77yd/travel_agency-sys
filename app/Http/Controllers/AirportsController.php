@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Airports;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class AirportsController extends Controller
@@ -13,7 +15,8 @@ class AirportsController extends Controller
     public function index()
     {
         $airports = Airports::all();
-        return view('sys_setup.airports', compact('airports'));
+        $users= User::all();
+        return view('sys_setup.airports', compact('airports','users'));
     }
 
 
@@ -29,7 +32,7 @@ class AirportsController extends Controller
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,
             'created_by' => auth()->id(),   // أو: auth()->user()->id
-            'updated_by' => auth()->id(),   // نفس الإنشاء أول مرة
+            
         ]);
         return redirect()->route('airports')->with('success', 'تم إضافة المطار بنجاح');
     }

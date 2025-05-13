@@ -81,8 +81,11 @@
                         <th>الرقم</th>
                         <th>كود الطيران</th>
                         <th>الدولة</th>
-                        <th>اسم الشركة بالعربي</th>
-                        <th>اسم الشركة بالانجليزي</th>
+                        <th>الاسم عربي  بالعربي</th>
+                        <th>  الاسم انجليزي</th>
+                     <th>المستخدم  </th>
+                     <th> تعديل  </th>
+
                         <th>العمليات</th>
                     </tr>
                 </thead>
@@ -98,6 +101,29 @@
                                 <td>{{ $airline->country }}</td>
                                 <td>{{ $airline->name_ar }}</td>
                                 <td>{{ $airline->name_en }}</td>
+                                <td>
+                             @if (isset($users))
+                               @foreach ($users as $user)
+                                   @if ($user->id == $airline->created_by)
+                                       {{ $user->name }}
+                                  
+                                   @endif
+                              @endforeach
+                    
+                          @endif
+                                <td>
+                                    @if (isset($users))
+                                        @foreach ($users as $user)
+                                            @if ($user->id == $airline->updated_by)
+                                                {{ $user->name }}
+                                            
+                                            @else 
+                                            -
+                                            @endif
+                                        @endforeach
+                                        
+                                    @endif
+                                </td>
                                 <td>
                                   <a class="btn btn-info btn-sm" href="{{ route('airlines.edit', $airline->id) }}">
                               <i class="fas fa-pencil-alt">
