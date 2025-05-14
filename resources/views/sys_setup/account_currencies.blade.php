@@ -130,15 +130,14 @@
                                 </td>
                                 <td>{{ $account_currency->debtor }}</td>
                                 <td>{{ $account_currency->creditor }}</td>
-                                <td>{{ $account_currency->balance }}</td>
-                                @if ($account_currency->status == 1)
+                                <td>{{ $account_currency->debtor - $account_currency->creditor }}</td>
+                                @if ($account_currency->is_active == 1)
                                     <td style="color: darkgreen">مفعل</td>
-                                    
-                                @else
+                                @elseif ($account_currency->is_active == 0)
                                     <td style="color: red">غير مفعل</td>
                                 @endif
                                 <td>{{ $account_currency->limit }}</td>
-                                <td>{{ auth()->user()->name}}</td>
+                                <td>{{ auth()->user()->name }}</td>
                                 <td>
                                     <a class="btn btn-success btn-sm"
                                         href="{{ route('account_currencies.edit', $account_currency->id) }}">

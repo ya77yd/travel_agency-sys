@@ -74,8 +74,8 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>حالة الحساب</label>
-                            <select class="form-control" id="status" name="status">
-                                @if ($account_currency->status == 1)
+                            <select class="form-control" id="is_active" name="is_active">
+                                @if ($account_currency->is_active == 1)
                                     <option value="1">مفعل</option>
                                     <option value="0">غير مفعل</option>
                                 @else

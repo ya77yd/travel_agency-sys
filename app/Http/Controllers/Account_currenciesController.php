@@ -47,7 +47,7 @@ class Account_currenciesController extends Controller
         $accounts = Accounts::all();
         $currencies = Currencies::all();
 
-        return view('sys_setup.edit.account_currencies_edit', compact('account_currencies', 'accounts', 'currencies'));
+        return view('sys_setup.edit.account_currencies_edit', compact('account_currency', 'accounts', 'currencies'));
     }
 
 
