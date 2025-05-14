@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currencies;
+use App\Models\Account_currencies;
+use App\Models\Accounts;
 use Illuminate\Http\Request;
 
 class CurrenciesController extends Controller
@@ -24,6 +26,25 @@ class CurrenciesController extends Controller
             'code' => $request->code,
             'exchange_rate' => $request->exchange_rate,
             'created_by' => auth()->id(),
+        ]);
+        $currency = Currencies::where('name', $request->name)->first();
+        Account_currencies::create([
+            'account_id' => 6,
+            'currency_id' => $currency->id,
+            'debtor' => 0,
+            'creditor' => 0,
+            'is_active' => 1,
+            'limit' => 0,
+            'created_by' => auth()->user()->id,
+        ]);
+         Account_currencies::create([
+            'account_id' => 7,
+            'currency_id' => $currency->id,
+            'debtor' => 0,
+            'creditor' => 0,
+            'is_active' => 1,
+            'limit' => 0,
+            'created_by' => auth()->user()->id,
         ]);
         return redirect()->route('currencies')->with('success', 'تم إضافة العملة بنجاح');
     }
