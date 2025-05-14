@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Account_currencies;
+use App\Models\Accounts;
+use App\Models\Currencies;
 
 use Illuminate\Http\Request;
 
@@ -12,15 +14,11 @@ class Account_currenciesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $account_currencies = Account_currencies::all();
+        $accounts = Accounts::all();
+        $currencies = Currencies::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('sys_setup.account_currencies', compact('account_currencies', 'accounts', 'currencies'));
     }
 
     /**
@@ -28,38 +26,56 @@ class Account_currenciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Airlines $airlines)
-    {
-        //
+        Account_currencies::create([
+            'account_id' => $request->account_id,
+            'currency_id' => $request->currency_id,
+            'debtor' => $request->debtor,
+            'creditor' => $request->creditor,
+            'is_active' => 1,
+            'limit' => $request->limit,
+            'created_by' => auth()->user()->id,
+        ]);
+        return redirect()->route('account_currencies')->with('success', 'تم إضافة الحساب بنجاح');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Airlines $airlines)
+    public function edit($id)
     {
-        //
+        $account_currency = Account_currencies::find($id);
+        $accounts = Accounts::all();
+        $currencies = Currencies::all();
+
+        return view('sys_setup.edit.account_currencies_edit', compact('account_currencies', 'accounts', 'currencies'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Airlines $airlines)
+    public function update(Request $request)
     {
-        //
+        $account_currency = Account_currencies::find($request->id);
+        $account_currency->update([
+            'account_id' => $request->account_id,
+            'currency_id' => $request->currency_id,
+            'debtor' => $request->debtor,
+            'creditor' => $request->creditor,
+            'is_active' => $request->is_active,
+            'limit' => $request->limit,
+            'updated_by' => auth()->user()->id,
+        ]);
+        return redirect()->route('account_currencies')->with('success', 'تم تعديل الحساب بنجاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Airlines $airlines)
+    public function destroy($id)
     {
-        //
+        $account_currency = Account_currencies::find($id);
+        $account_currency->delete();
+        return redirect()->route('account_currencies')->with('success', 'تم حذف الحساب بنجاح');
     }
 }
