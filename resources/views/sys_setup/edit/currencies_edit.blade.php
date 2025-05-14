@@ -15,14 +15,14 @@
         <div class="card-body">
             <form role="form" action="{{ route('currencies.update') }}" method="POST">
                 @csrf
-                <input type="hidden" name="id" value="{{ $currency->id }}">
+                <input type="hidden" name="id" value="{{ $currency->id }}" required>
                 <div class="row">
                     <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
                             <label for="">كود العملة</label>
                             <input type="text" id="code" name="code" value="{{ $currency->code }}"
-                                class="form-control" placeholder=" ادخل كود مكون من 3 احرف " maxlength="3">
+                                class="form-control" placeholder=" ادخل كود مكون من 3 احرف " maxlength="3" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label>اسم العملة</label>
                             <input type="text" id="name" name="name" value="{{ $currency->name }}"
-                                class="form-control" placeholder="  ادخل اسم العملة">
+                                class="form-control" placeholder="  ادخل اسم العملة" required>
                         </div>
                     </div>
                     <div class="col-5">
@@ -39,7 +39,7 @@
                             <label>سعر الصرف</label>
                             <input type="float" id="exchange_rate" name="exchange_rate"
                                 value="{{ $currency->exchange_rate }}" class="form-control"
-                                placeholder="ادخل سعر الصرف">
+                                placeholder="ادخل سعر الصرف" required>
                         </div>
                     </div>
                     <div class="col-2">

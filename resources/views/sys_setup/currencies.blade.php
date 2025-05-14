@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="">كود العملة</label>
                             <input type="text" id="code" name="code" class="form-control"
-                                placeholder=" ادخل كود مكون من 3 احرف " maxlength="3">
+                                placeholder=" ادخل كود مكون من 3 احرف " maxlength="3" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label>اسم العملة</label>
                             <input type="text" id="name" name="name" class="form-control"
-                                placeholder="  ادخل اسم العملة">
+                                placeholder="  ادخل اسم العملة" required>
                         </div>
                     </div>
                     <div class="col-5">
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label>سعر الصرف</label>
                             <input type="float" id="exchange_rate" name="exchange_rate" class="form-control"
-                                placeholder="ادخل سعر الصرف">
+                                placeholder="ادخل سعر الصرف" required>
                         </div>
                     </div>
                     <div class="col-2">

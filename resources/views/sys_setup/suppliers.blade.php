@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="">الاسم</label>
                             <input type="text" id="name" name="name" class="form-control"
-                                placeholder="ادخل اسم المورد">
+                                placeholder="ادخل اسم المورد" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -29,7 +29,7 @@
                         @if (isset($accounts))
                             <div class="form-group">
                                 <label>الحساب</label>
-                                <select class="form-control" id="account_id" name="account_id">
+                                <select class="form-control select2" style="width: 100%;" id="account_id" name="account_id" required>
                                     <option value="">اختر الحساب</option>
                                     @foreach ($accounts as $account)
                                         <option value="{{ $account->id }}">{{ $account->name }}</option>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="">رقم الجوال</label>
                             <input type="phone" id="phone" name="phone" class="form-control"
-                                placeholder="ادخل رقم الجوال">
+                                placeholder="ادخل رقم الجوال" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label for="">البريد</label>
                             <input type="email" id="email" name="email" class="form-control"
-                                placeholder="ادخل البريد الالكتروني">
+                                placeholder="ادخل البريد الالكتروني" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="">العنوان</label>
                             <input type="text" id="address" name="address" class="form-control"
-                                placeholder="ادخل العنوان">
+                                placeholder="ادخل العنوان" required>
                         </div>
                     </div>
                     <div class="col-1">

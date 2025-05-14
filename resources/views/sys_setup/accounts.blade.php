@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="">الاسم</label>
                             <input type="text" id="name" name="name" class="form-control"
-                                placeholder="ادخل اسم الاحساب">
+                                placeholder="ادخل اسم الاحساب" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -29,7 +29,7 @@
                         @if (isset($accounts))
                             <div class="form-group">
                                 <label>الحساب الاب</label>
-                                <select class="form-control" id="parent_id" name="parent_id">
+                                <select class="form-control select2" style="width: 100%;" id="parent_id" name="parent_id" required>
                                     <option value="">اختر الحساب</option>
                                     @foreach ($accounts as $account)
                                         @if ($account->is_main == 1)
@@ -43,7 +43,7 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>حساب رئيسي؟</label>
-                            <select class="form-control" id="is_main" name="is_main">
+                            <select class="form-control" id="is_main" name="is_main" required>
                                 <option value="0">لا</option>
                                 <option value="1">نعم</option>
                             </select>

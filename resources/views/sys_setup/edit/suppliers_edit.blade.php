@@ -15,14 +15,14 @@
         <div class="card-body">
             <form role="form" action="{{ route('suppliers.update') }}" method="POST">
                 @csrf
-                <input type="hidden" name="id" value="{{ $supplier->id }}">
+                <input type="hidden" name="id" value="{{ $supplier->id }}" required>
                 <div class="row">
                     <div class="col-4">
                         <!-- text input -->
                         <div class="form-group">
                             <label for="">الاسم</label>
                             <input type="text" id="name" name="name" value="{{ $supplier->name }}"
-                                class="form-control" placeholder="ادخل اسم المورد">
+                                class="form-control" placeholder="ادخل اسم المورد" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -30,7 +30,7 @@
                         @if (isset($accounts))
                             <div class="form-group">
                                 <label>الحساب</label>
-                                <select class="form-control" id="account_id" name="account_id">
+                                <select class="form-control select2" style="width: 100%;" id="account_id" name="account_id" required>
                                     <option value="">اختر الحساب</option>
                                     @foreach ($accounts as $account)
                                         @if ($account->id == $supplier->account_id)
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="">رقم الجوال</label>
                             <input type="phone" id="phone" name="phone" value="{{ $supplier->phone }}"
-                                class="form-control" placeholder="ادخل رقم الجوال">
+                                class="form-control" placeholder="ادخل رقم الجوال" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label for="">البريد</label>
                             <input type="email" id="email" name="email" value="{{ $supplier->email }}"
-                                class="form-control" placeholder="ادخل البريد الالكتروني">
+                                class="form-control" placeholder="ادخل البريد الالكتروني" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label for="">العنوان</label>
                             <input type="text" id="address" name="address" value="{{ $supplier->address }}"
-                                class="form-control" placeholder="ادخل العنوان">
+                                class="form-control" placeholder="ادخل العنوان" required>
                         </div>
                     </div>
                     <div class="col-4">

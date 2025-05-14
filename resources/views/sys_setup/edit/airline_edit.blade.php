@@ -19,14 +19,14 @@
             <div class="card-body">
                 <form role="form" action="{{ route('airlines.update') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $airline->id }}">
+                    <input type="hidden" name="id" value="{{ $airline->id }}" required>
                     <div class="row">
                         <div class="col-3">
                             <!-- text input -->
                             <div class="form-group">
                                 <label for="">كود الشركة</label>
                                 <input type="text" id="code" name="code" value="{{ $airline->code }}"
-                                    class="form-control" placeholder=" " maxlength="3">
+                                    class="form-control" placeholder=" " maxlength="3" required>
                             </div>
                         </div>
                         <div class="col-4">
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label>الدولة</label>
                                 <input type="text" id="country" name="country" value="{{ $airline->country }}"
-                                    class="form-control" placeholder="  الدولة">
+                                    class="form-control" placeholder="  الدولة"required>
                             </div>
                         </div>
 
@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label>اسم الشركة عربي</label>
                                 <input type="text" id="name_ar" name="name_ar" value="{{ $airline->name_ar }}"
-                                    class="form-control" placeholder="ادخل اسم الشركة بالعربي">
+                                    class="form-control" placeholder="ادخل اسم الشركة بالعربي"required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <label>اسم الشركة انجليزي</label>
                                 <input type="text" id="name_en" name="name_en" value="{{ $airline->name_en }}"
-                                    class="form-control" placeholder=" ادخل اسم المطار بالانجليزي">
+                                    class="form-control" placeholder=" ادخل اسم المطار بالانجليزي"required>
                             </div>
 
                         </div>

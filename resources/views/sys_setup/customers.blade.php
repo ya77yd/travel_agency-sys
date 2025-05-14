@@ -21,14 +21,14 @@
                         <div class="form-group">
                             <label for=""> اسم العميل</label>
                             <input type="text" id="name" name="name" class="form-control"
-                                placeholder="" >
+                                placeholder="" required>
                         </div>
                     </div>
                     <div class="col-4">
                         <!-- text input -->
                         <div class="form-group">
                             <label>حساب العميل</label>
-                           <select class="form-control select2" style="width: 100%;" id="account_id" name="account_id">
+                           <select class="form-control select2" style="width: 100%;" id="account_id" name="account_id" required>
                     <option value="">اختر الحساب</option>
                            @if(isset($accounts))
                         @foreach($accounts as $account)
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label>العنوان</label>
                             <input type="text" id="address" name="address" class="form-control"
-                                placeholder="">
+                                placeholder="" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label>رقم الهوية</label>
                             <input type="text" id="id_card" name="id_card" class="form-control"
-                                placeholder="">
+                                placeholder="" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label>  رقم الهاتف</label>
                             <input type="phone" id="phone" name="phone" class="form-control"
-                                placeholder="    ">
+                                placeholder="    " required>
                         </div>
                     </div>
                     <div class="col-2">

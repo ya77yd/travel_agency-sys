@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="">كود الشركة</label>
                             <input type="text" id="code" name="code" class="form-control"
-                                placeholder=" ادخل كود مثل:IY  " maxlength="3">
+                                placeholder=" ادخل كود مثل:IY  " maxlength="3" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label>الدولة</label>
                             <input type="text" id="country" name="country" class="form-control"
-                                placeholder="  الدولة">
+                                placeholder="  الدولة" required>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label>اسم الشركة عربي</label>
                             <input type="text" id="name_ar" name="name_ar" class="form-control"
-                                placeholder="ادخل اسم الشركة بالعربي">
+                                placeholder="ادخل اسم الشركة بالعربي" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <label>اسم الشركة انجليزي</label>
                             <input type="text" id="name_en" name="name_en" class="form-control"
-                                placeholder=" ادخل اسم الشركة بالانجليزي">
+                                placeholder=" ادخل اسم الشركة بالانجليزي" required>
                         </div>
 
                     </div>
