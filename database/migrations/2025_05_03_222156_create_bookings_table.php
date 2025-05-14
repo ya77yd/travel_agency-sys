@@ -9,11 +9,11 @@ return new class extends Migration {
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id(); // أي دي ترقيم تلقائي
-            $table->string('pnr')->unique(); // رقم الحجز (PNR)
+            $table->string('pnr'); // رقم الحجز (PNR)
             $table->unsignedBigInteger('supplier_id'); // رقم المورد
             $table->unsignedBigInteger('customer_id'); // رقم الزبون
             $table->string('trip_type'); // نوع الرحلة
-            $table->dateTime('create'); // تاريخ الإنشاء
+            $table->date('date'); // تاريخ الإنشاء
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale_price', 10, 2); // سعر البيع
             $table->text('notes')->nullable();
