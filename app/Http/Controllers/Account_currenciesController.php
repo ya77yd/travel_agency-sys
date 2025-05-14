@@ -14,8 +14,8 @@ class Account_currenciesController extends Controller
      */
     public function index()
     {
-        $account_currencies = Account_currencies::all();
-        $accounts = Accounts::all();
+        $account_currencies = Account_currencies::where('account_id', '!=', 6)->where('account_id', '!=', 7)->get();
+        $accounts = Accounts::where('is_main',0)->where('status',1)->get();
         $currencies = Currencies::all();
 
         return view('sys_setup.account_currencies', compact('account_currencies', 'accounts', 'currencies'));
@@ -44,7 +44,7 @@ class Account_currenciesController extends Controller
     public function edit($id)
     {
         $account_currency = Account_currencies::find($id);
-        $accounts = Accounts::all();
+        $accounts = Accounts::where('is_main',0)->where('status',1)->get();
         $currencies = Currencies::all();
 
         return view('sys_setup.edit.account_currencies_edit', compact('account_currency', 'accounts', 'currencies'));
