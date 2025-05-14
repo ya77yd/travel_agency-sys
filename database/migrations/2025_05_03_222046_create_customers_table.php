@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('customers', function (Blueprint $table) {
             $table->id(); // أي دي ترقيم تلقائي
             $table->unsignedBigInteger('account_id'); // رقم الحساب مأخوذ من جدول الحسابات
+           $table->string('name');
             $table->string('phone'); // الهاتف
             $table->string('address'); // العنوان
             $table->string('id_card')->unique(); // رقم البطاقة الشخصية
