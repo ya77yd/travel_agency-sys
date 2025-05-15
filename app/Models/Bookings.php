@@ -15,6 +15,7 @@ class Bookings extends Model
         'sale_price',
         'notes',
         'currency',
+        'date',
         'created_by',
         'updated_by',
         'created_at', // إضافة التايم ستامب
