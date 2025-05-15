@@ -59,8 +59,22 @@
                 color: inherit !important;
                 font-size: 0, 8em !important;
             }
+
+
         </style>
     @endif
+<style>
+
+
+.dataTables_wrapper {
+    overflow-x:scroll !important;
+    max-height: 500px !important;
+}
+.dataTables_scrollHead {
+    position: relative !important;
+}
+    </style>
+    
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
