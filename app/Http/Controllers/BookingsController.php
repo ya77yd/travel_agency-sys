@@ -33,10 +33,18 @@ class BookingsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function add()
     {
-        //
-    }
+        $airports = Airports::all();
+       $suppliers = Suppliers::all();
+        $customers = Customers::all();
+        $trips = Travelroutes::all();
+        $currencies = Currencies::all();
+        $bookings = Bookings::all();
+        return view('bookings.bookings_add', compact('suppliers', 'customers', 'trips', 'currencies', 'bookings','airports'));}
+ 
+
+
 
     /**
      * Store a newly created resource in storage.

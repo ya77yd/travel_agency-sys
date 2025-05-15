@@ -76,15 +76,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('bookings')}}" class="nav-link">
+                            <a href="{{url('bookings_add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> الحجوزات  </p>
+                                <p> اضافة حجز  </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('tickets')}}" class="nav-link">
+                            <a href="{{url('bookings')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p> ادارة التذاكر  </p>
+                                <p> ادارة الحجوزات  </p>
                             </a>
                         </li>
                        <li class="nav-item">

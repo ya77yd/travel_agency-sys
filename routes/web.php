@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/airlines/update/', [AirlinesController::class, 'update'])->name('airlines.update');
     Route::get('/airlines/destroy/{id}', [AirlinesController::class, 'destroy'])->name('airlines.destroy');
     // Bookings Routes
+    Route::get('/bookings/add', [BookingsController::class, 'add'])->name('bookings.add');
     Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings');
     Route::post('/bookings/store', [BookingsController::class, 'store'])->name('bookings.store');
     Route::get('/bookings/edit/{id}', [BookingsController::class, 'edit'])->name('bookings.edit');
