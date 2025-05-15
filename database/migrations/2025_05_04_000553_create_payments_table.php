@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('account_credit');  // الحساب المرتبط بالدفع
             $table->unsignedBigInteger('currency_id');  // العملة المستخدمة في الدفع
             $table->decimal('amount', 18, 2);  // المبلغ المدفوع
-            $table->string('payment_method');  // طريقة الدفع (نقدي، شيك، تحويل بنكي، إلخ)
-            $table->string('  details')->nullable();  // تفاصيل الدفع (اختياري)
+            $table->string('type');  // طريقة الدفع (نقدي، شيك، تحويل بنكي، إلخ)
+            $table->string('details')->nullable();  // تفاصيل الدفع (اختياري)
             $table->date('date');  // تاريخ الدفع
            $table->unsignedBigInteger('created_by');  // المستخدم الذي أنشأ السجل
            $table->unsignedBigInteger('updated_by')->nullable();  // المستخدم الذي قام بالتحديث
