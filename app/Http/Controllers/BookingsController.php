@@ -33,7 +33,7 @@ class BookingsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function add()
+    public function create()
     {
         $airports = Airports::all();
        $suppliers = Suppliers::all();
@@ -41,7 +41,8 @@ class BookingsController extends Controller
         $trips = Travelroutes::all();
         $currencies = Currencies::all();
         $bookings = Bookings::all();
-        return view('bookings.bookings_add', compact('suppliers', 'customers', 'trips', 'currencies', 'bookings','airports'));}
+        return view('bookings.bookings_add', compact('suppliers', 'customers', 'trips', 'currencies', 'bookings','airports'));
+    }
  
 
 

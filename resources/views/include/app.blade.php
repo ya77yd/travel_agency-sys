@@ -263,15 +263,24 @@
         });
 
 
-        $(function() {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
+        $(document).ready(function() {
+            $('#example1').DataTable({
+                "responsive": true,
                 "autoWidth": false,
+                "language": {
+                    "lengthMenu": "عرض _MENU_ سجل",
+                    "zeroRecords": "لا توجد سجلات",
+                    "info": "عرض صفحة _PAGE_ من _PAGES_",
+                    "infoEmpty": "لا توجد سجلات متاحة",
+                    "infoFiltered": "(تم تصفية _MAX_ من السجلات)",
+                    "search": "بحث:",
+                    "paginate": {
+                        "first": "الأول",
+                        "last": "الأخير",
+                        "next": "التالي",
+                        "previous": "السابق"
+                    }
+                }
             });
         });
     </script>

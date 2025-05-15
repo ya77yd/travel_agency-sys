@@ -263,5 +263,9 @@
         // عند تغيير نوع الرحلة
         tripType.addEventListener('change', toggleReturnDate);
     });
+
+
+
+    
 </script>
 @endsection
