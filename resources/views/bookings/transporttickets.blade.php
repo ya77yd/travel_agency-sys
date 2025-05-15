@@ -159,22 +159,23 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>الرقم</th>
-                            <th>اسم العميل</th>
-                            <th>رقم التذكرة</th>
-                            <th>جهة الانطلاق</th>
-                            <th>جهة الوصول</th>
-                            <th>التأريخ</th>
+                            <th>م</th>
+                            <th> المسافر</th>
+                            
+                            <th> التذكرة</th>
+                            <th> الرخلة</th>
+                            
+                            <th>التاريخ</th>
                             <th>تأريخ الرحلة</th>
-                            <th>سعر الشراء</th>
-                            <th>سعر البيع</th>
+                            <th> الشراء</th>
+                            <th> البيع</th>
                             <th>العملة</th>
                             <th>المورد</th>
                             <th>العميل</th>
-                            <th>نوع الرحلة</th>
-                            <th>تأريخ العودة</th>
+                            
+                            <th> العودة</th>
                             <th>اسم المستخدم</th>
-                            <th>العمليات</th>
+                            <th>.</th>
                         </tr>
                     </thead>
                     @php
@@ -187,8 +188,7 @@
                                     <td>{{ $count++ }}</td>
                                     <td>{{ $transportticket->name }}</td>
                                     <td>{{ $transportticket->tkt }}</td>
-                                    <td>{{ $transportticket->from }}</td>
-                                    <td>{{ $transportticket->to }}</td>
+                                    <td>{{ $transportticket->from }}-{{ $transportticket->to }}</td>
                                     <td>{{ $transportticket->date }}</td>
                                     <td>{{ $transportticket->travel_date }}</td>
                                     <td>{{ $transportticket->price }}</td>
@@ -196,7 +196,7 @@
                                     @if (isset($currencies))
                                         @foreach ($currencies as $currency)
                                             @if ($currency->id == $transportticket->currency)
-                                                <td>{{ $currency->name }}</td>
+                                                <td>{{ $currency->code }}</td>
                                             @endif
                                         @endforeach
                                     @endif
@@ -214,7 +214,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-                                    <td>{{ $transportticket->type }}</td>
+                                    
                                     <td>{{ $transportticket->return }}</td>
                                     <td>{{ auth()->user()->name }}</td>
                                     <td>
@@ -222,13 +222,13 @@
                                             href="{{ route('transporttickets.edit', $transportticket->id) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
-                                            تعديل
+                                            
                                         </a>
                                         <a class="btn btn-danger btn-sm"
                                             href="{{ route('transporttickets.destroy', $transportticket->id) }}">
                                             <i class="fas fa-trash">
                                             </i>
-                                            حذف
+                                          
                                         </a>
                                     </td>
                                 </tr>
