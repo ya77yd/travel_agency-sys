@@ -13,7 +13,6 @@ class Travelroutes extends Model
         'stopover',
         'departure_time',
         'arrival_time',
-        'day',
         'trip_type',
         'status',
         'created_by',
