@@ -171,7 +171,7 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label>وصول:</label>
-                                            <input type="datetime-local" id="arrival_time" name="" class="form-control" required>
+                                            <input type="datetime-local" id="arrival_time" name="" class="form-control" required value="{{ $travel_route->arrival_time }}">
                                         </div>
                                     </div>
                                     <div class="col-4">

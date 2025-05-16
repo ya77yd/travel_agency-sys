@@ -76,8 +76,8 @@
     </style>
     
 </head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+{{-- hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed --}}
+<body class="hold-transition sidebar-mini sidebar-collapse">
     <div class="wrapper">
         @include('include.navbar')
 
