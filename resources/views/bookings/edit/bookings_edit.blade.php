@@ -56,8 +56,8 @@
                         <!-- text input -->
                         @if (isset($currencies))
                             <div class="form-group">
-                                <label>العملات</label>
-                                <select class="form-control" id="currency_id" name="currency_id" required>
+                                <label>العملع</label>
+                                <select class="form-control" id="currency" name="currency" required>
                                     <option value="">اختر العملة</option>
                                     @foreach ($currencies as $currency)
                                         <option value="{{ $currency->id }}"
@@ -73,7 +73,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="">PNR</label>
-                            <input type="text" id="pnr" name="pnr" class="form-control" placeholder="PNR" maxlength="6" required value="{{ $bookings->pnr }}">
+                            <input type="text" id="pnr" name="pnr" class="form-control" placeholder="PNR" maxlength="6" minlength="6" required value="{{ $bookings->pnr }}">
                         </div>
                     </div>
                     <div class="col-3">
@@ -119,48 +119,49 @@
                                 <div class="row">
                                     <div class="col-4">
                                         @if (isset($airports))
-                                            <div class="form-group">
-                                                <label>من:</label>
-                                                <select class="form-control select2" style="width: 100%;" id="from" name="travel_routes[0][from]" required>
-                                                    <option value="">اختر</option>
-                                                    @foreach ($airports as $airport)
-                                                        <option value="{{ $airport->id }}">
-                                                            {{ $airport->name_ar }}-{{ $airport->code }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        @endif
+                            <div class="form-group">
+                                <label>من</label>
+                                <select class="form-control select2" style="width: 100%;" id="customer_id" name="travel_routes[0][from]" required >
+                                    <option value="">اختر مطار</option>
+                                    @foreach ($airports as $airport)
+                                        <option value="{{ $airport->id }}"
+                                            {{ $airport->id == $travel_route->from ? 'selected' : '' }}>
+                                            {{ $airport->name_ar }}-{{$airport->code}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                                     </div>
-                                    <div class="col-4">
+                                   {{-- الى --}}
+                                   <div class="col-4">
                                         @if (isset($airports))
-                                            <div class="form-group">
-                                                <label>إلى:</label>
-                                                <select class="form-control select2" style="width: 100%;" id="to" name="travel_routes[0][to]" required>
-                                                    <option value="">اختر</option>
-                                                    @foreach ($airports as $airport)
-                                                        <option value="{{ $airport->id }}">
-                                                            {{ $airport->name_ar }}-{{ $airport->code }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        @endif
+                            <div class="form-group">
+                                <label>الى:</label>
+                                <select class="form-control select2" style="width: 100%;" id="customer_id" name="travel_routes[0][to]" required >
+                                    <option value="">اختر مطار الوصول</option>
+                                    @foreach ($airports as $airport)
+                                        <option value="{{ $airport->id }}"
+                                            {{ $airport->id == $travel_route->to ? 'selected' : '' }}>
+                                            {{ $airport->name_ar }}-{{$airport->code}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                                     </div>
-                                    <div class="col-4">
+                                     <div class="col-4">
                                         @if (isset($airports))
-                                            <div class="form-group">
-                                                <label>توقف:</label>
-                                                <select class="form-control select2" style="width: 100%;" id="stopover" name="travel_routes[0][stopover]">
-                                                    <option value="">اختر</option>
-                                                    @foreach ($airports as $airport)
-                                                        <option value="{{ $airport->id }}">
-                                                            {{ $airport->name_ar }}-{{ $airport->code }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        @endif
+                            <div class="form-group">
+                                <label>الى:</label>
+                                <select class="form-control select2" style="width: 100%;" id="customer_id" name="travel_routes[0][stopover]" required >
+                                    <option value="">اختر مطار التوقف  </option>
+                                    @foreach ($airports as $airport)
+                                        <option value="{{ $airport->id }}"
+                                            {{ $airport->id == $travel_route->stopover ? 'selected' : '' }}>
+                                            {{ $airport->name_ar }}-{{$airport->code}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
@@ -178,7 +179,6 @@
                                         <div class="form-group">
                                             <label>نوع الرحلة:</label>
                                             <select class="form-control" id="trip_type" name="" required>
-                                                <option value="">اختر</option>
                                                 <option value="going">ذهاب</option>
                                             </select>
                                         </div>
