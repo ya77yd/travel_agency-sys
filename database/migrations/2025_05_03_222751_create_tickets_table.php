@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('age'); // العمر
             $table->decimal('price', 10, 2); // السعر
             $table->decimal('sale', 10, 2); // سعر البيع
+            $table->string('status')->default('active'); // الحالة (نشط، ملغى، إلخ)
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ السجل
             $table->unsignedBigInteger('updated_by')->nullable(); // آخر تحديث بواسطة
             $table->timestamps(); // وقت الإنشاء وآخر تحديث

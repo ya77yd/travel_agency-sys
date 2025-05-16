@@ -10,9 +10,9 @@ return new class extends Migration {
         Schema::create('travelroutes', function (Blueprint $table) {
             $table->id(); // معرف فريد للمسار
             $table->unsignedBigInteger('booking_id'); // رقم الحجز كمفتاح أجنبي
-            $table->string('from'); // نقطة الانطلاق
-            $table->string('to'); // نقطة النهاية
-            $table->string('stopover')->nullable(); // التوقف (اختياري)
+            $table->unsignedBigInteger('from'); // نقطة الانطلاق
+            $table->unsignedBigInteger('to'); // نقطة النهاية
+            $table->unsignedBigInteger('stopover')->nullable(); // التوقف (اختياري)
             $table->dateTime('departure_time'); // وقت الإقلاع
             $table->dateTime('arrival_time'); // وقت الوصول
             $table->date('day'); // اليوم كتاريخ
@@ -27,6 +27,9 @@ return new class extends Migration {
             // علاقة المستخدمين
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
+            $table->foreign('from')->references('id')->on('airports');
+            $table->foreign('to')->references('id')->on('airports');
+            $table->foreign('stopover')->references('id')->on('airports');
         });
     }
 
