@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id(); // معرف فريد للتذكرة
             $table->unsignedBigInteger('booking_id'); // رقم الحجز كمفتاح أجنبي
-            $table->string('tkt')->unique(); // رقم التذكرة
+            $table->string('tkt'); // رقم التذكرة
             $table->string('name'); // اسم صاحب التذكرة
             $table->string('age'); // العمر
             $table->decimal('price', 10, 2); // السعر
