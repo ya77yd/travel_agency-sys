@@ -165,9 +165,56 @@ class BookingsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bookings $bookings)
+    public function update(Request $request)
     {
-        //
+        $booking = Bookings::find($request->id);
+        $booking->update([
+            'supplier_id' => $request->supplier_id,
+            'customer_id' => $request->customer_id,
+            'currency'    => $request->currency,  // سنستخدم حقل currency للموديل
+            'pnr'         => $request->pnr,
+            'trip_type'   => $request->trip_type,
+            'date'        => $request->date,
+            'notes'       => $request->notes,
+            'updated_by'       => auth()->id(),
+        ]);
+                foreach ($request->travel_routes as $routeData) {
+                        $route = Travelroutes::where('booking_id', $request->id)
+                            ->where('trip_type', $routeData['trip_type'])
+                            ->first();
+                        if ($route) {
+                        $route->update([
+                            'booking_id'     => $booking->id,
+                            'from'           => $routeData['from'],
+                            'to'             => $routeData['to'],
+                            'stopover'       => isset($routeData['stopover']) ? $routeData['stopover'] : null,
+                            'departure_time' => $routeData['departure_time'],
+                            'arrival_time'   => $routeData['arrival_time'],
+                            'trip_type'      => $routeData['trip_type'],
+                            'status'         => 'confirmed',
+                            'updated_by'     => auth()->id(),
+                        ]);
+                        Log::debug('updated Travel Route', ['route_id' => $route->id]);
+                    }  else {
+                        $route = Travelroutes::create([
+                            'booking_id'     => $booking->id,
+                            'from'           => $routeData['from'],
+                            'to'             => $routeData['to'],
+                            'stopover'       => isset($routeData['stopover']) ? $routeData['stopover'] : null,
+                            'departure_time' => $routeData['departure_time'],
+                            'arrival_time'   => $routeData['arrival_time'],
+                            'trip_type'      => $routeData['trip_type'],
+                            'status'         => 'confirmed',
+                            'created_by'     => auth()->id(),
+                            'updated_by'     => auth()->id(),
+                        ]);
+                        Log::debug('Created Travel Route', ['route_id' => $route->id]);
+                    }
+                }                         
+            if ($request->trip_type == 'one_way') {
+                Travelroutes::where('booking_id', $request->id)->where('trip_type', 'back')->delete();
+            }
+        return redirect()->route('bookings')->with('success', 'تم تعديل الحجز بنجاح');
     }
 
     /**
@@ -175,8 +222,17 @@ class BookingsController extends Controller
      */
     public function destroy($id)
     {
-        $boking= Bookings::find($id);
-        $boking->delete();
-        return redirect()->route('bookings')->with('success', 'تم حذف الحجز بنجاح');
+        $booking = Bookings::find($id);
+        $tickets = Tickets::where('booking_id', $id)->get();
+        $travelRoutes = Travelroutes::where('booking_id', $id)->get();
+        if (!$tickets) {
+            foreach ($travelRoutes as $route) {
+                $route->delete();
+            }
+            $booking->delete();
+                return redirect()->route('bookings')->with('success', 'تم حذف الحجز بنجاح');
+        } else {
+            return redirect()->route('bookings')->with('error', 'لا يمكن حذف الحجز لأنه يحتوي على تذاكر مرتبطة به');
+        }
     }
 }

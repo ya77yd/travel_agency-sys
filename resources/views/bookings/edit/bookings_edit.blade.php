@@ -19,6 +19,7 @@
             <form role="form" action="{{ route('bookings.update') }}" method="POST">
                 @csrf
                 <div class="row">
+                    <input type="hidden" name="id" value="{{ $bookings->id }}">
                     <!-- بيانات المورد، العميل والعملة -->
                     <div class="col-4">
                         <!-- text input -->
