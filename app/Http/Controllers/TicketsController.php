@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tickets;
+use App\Models\Bookings;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Ticket;
 
@@ -58,9 +59,12 @@ class TicketsController extends Controller
     public function update(Request $request)
     {
         $tickets = Tickets::find($request->id);
-        if (!$tickets) {
-            return redirect()->route('bookings.edit')->with('error', 'Ticket not found.');
-        }
+        $booking = Bookings::find($tickets->booking_id);
+        $b['price'] = $booking->price -$tickets->price;
+        $b['price'] += $request->price;
+        $b['sale_price'] = $booking->sale_price -$tickets->sale;
+        $b['sale_price'] += $request->sale;
+        $booking->update($b);
         $tickets->update([
             'name' => $request->name,
             'tkt' => $request->tkt,
@@ -71,14 +75,23 @@ class TicketsController extends Controller
             'updated_by' => auth()->user()->id,
            
         ]);
-        return redirect()->route('bookings.edit', $request->booking_id)->with('success', 'تم تعديل التذكرة بنجاح');
+        return redirect()->route('bookings.edit', $booking->id)->with('success', 'تم تعديل التذكرة بنجاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tickets $tickets)
+    public function destroy($id)
     {
-        //
+        $tickets = Tickets::find($id);
+        if (!$tickets) {
+            return redirect()->route('bookings.edit')->with('error', 'Ticket not found.');
+        }
+        $booking = Bookings::find($tickets->booking_id);
+        $b['price'] = $booking->price -$tickets->price;
+        $b['sale_price'] = $booking->sale_price -$tickets->sale;
+        $booking->update($b);
+        $tickets->delete();
+        return redirect()->route('bookings.edit', $booking->id)->with('success', 'تم حذف التذكرة بنجاح');
     }
 }

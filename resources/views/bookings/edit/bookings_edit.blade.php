@@ -437,13 +437,13 @@
 
                                 <td>
                                     <a class="btn btn-success btn-sm"
-                                        href="{{ route('bookings.edit', $tiket->id) }}">
+                                        href="{{ route('tickets.edit', $tiket->id) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
 
                                     </a>
                                     <a class="btn btn-danger btn-sm"
-                                        href="{{ route('bookings.destroy', $tiket->id) }}">
+                                        href="{{ route('tickets.destroy', $tiket->id) }}">
                                         <i class="fas fa-trash">
                                         </i>
 

@@ -225,7 +225,7 @@ class BookingsController extends Controller
         $booking = Bookings::find($id);
         $tickets = Tickets::where('booking_id', $id)->get();
         $travelRoutes = Travelroutes::where('booking_id', $id)->get();
-        if (!$tickets) {
+        if ($tickets ->isEmpty()) {
             foreach ($travelRoutes as $route) {
                 $route->delete();
             }

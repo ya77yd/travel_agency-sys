@@ -36,11 +36,11 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label>العمر</label>
-                            <select class="form-control" name="tickets[0][age]" required>
+                            <select class="form-control" name="age" required>
                                 <option value="">اختر</option>
-                                <option value="adult">بالغ</option>
-                                <option value="child">طفل</option>
-                                <option value="infant">رضيع</option>
+                                <option value="adult" {{ $tickets->age == 'adult' ? 'selected' : '' }}>بالغ</option>
+                                <option value="child" {{ $tickets->age == 'child' ? 'selected' : '' }}>طفل</option>
+                                <option value="infant" {{ $tickets->age == 'infant' ? 'selected' : '' }}>رضيع</option>
                             </select>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label for="">سعر الشراء </label>
-                            <input type="text" id="price" name="price" value="{{ $tickets->pricre }}"
+                            <input type="text" id="price" name="price" value="{{ $tickets->price }}"
                                 class="form-control" placeholder="ادخل سعر الشراء  " required>
                         </div>
                     </div>
