@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Airports;
 use App\Models\Tickets;
-use App\Models\TravelRoute;
 use Illuminate\Support\Facades\DB;
 use App\Models\Bookings;
 use App\Models\Customers;
@@ -14,6 +13,8 @@ use App\Models\Travelroutes;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+
+use function Symfony\Component\String\b;
 
 class BookingsController extends Controller
 {
@@ -47,26 +48,7 @@ class BookingsController extends Controller
 
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     $bookings = Bookings::create([
-    //         'pnr' => $request->pnr,
-    //         'supplier_id' => $request->supplier_id,
-    //         'customer_id' => $request->customer_id,
-    //         'trip_type' => $request->trip_type,
-    //         'price' => 0,
-    //         'sale_price' => 0,
-    //         'notes' => $request->notes,
-    //         'currency' => $request->currency,
-    //         'date' => $request->date,
-    //         'created_by' => auth()->id(),
-    //     ]);
-        
-    //     return redirect()->route('bookings')->with('success', 'تم إضافة الحجز بنجاح');
-    // }
+    
   
      public function store(Request $request)
     {
@@ -165,10 +147,20 @@ class BookingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bookings $bookings)
+    public function edit( $id)
     {
+        $bookings = Bookings::find($id);
         
-    }
+        // dd($travelRoutes);
+        $tickets = Tickets::where('booking_id', $id)->get();
+        $travelRoutes = Travelroutes::where('booking_id', $id)->get();
+        // dd($travelRoutes);
+        $airports = Airports::all();
+       $suppliers = Suppliers::all();
+        $customers = Customers::all();
+        
+        $currencies = Currencies::all();
+        return view('bookings.edit.bookings_edit', compact('suppliers', 'customers', 'currencies', 'bookings','airports','tickets','travelRoutes'));}
 
     /**
      * Update the specified resource in storage.
