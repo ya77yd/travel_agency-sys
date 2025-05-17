@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('from'); // نقطة الانطلاق
             $table->unsignedBigInteger('to'); // نقطة النهاية
             $table->unsignedBigInteger('stopover')->nullable(); // التوقف (اختياري)
+            $table->unsignedBigInteger('airline_id'); // معرف شركة الطيران
             $table->dateTime('departure_time'); // وقت الإقلاع
             $table->dateTime('arrival_time'); // وقت الوصول
             $table->date('day'); // اليوم كتاريخ
@@ -25,6 +26,7 @@ return new class extends Migration {
             // علاقة رقم الحجز
             $table->foreign('booking_id')->references('id')->on('bookings');
             // علاقة المستخدمين
+            $table->foreign('airline_id')->references('id')->on('airlines');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->foreign('from')->references('id')->on('airports');
