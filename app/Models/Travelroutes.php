@@ -15,6 +15,7 @@ class Travelroutes extends Model
         'arrival_time',
         'trip_type',
         'status',
+        'airline_id',
         'created_by',
         'updated_by',
         'updated_at',
