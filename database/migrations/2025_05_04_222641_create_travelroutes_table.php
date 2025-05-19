@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('airline_id'); // معرف شركة الطيران
             $table->dateTime('departure_time'); // وقت الإقلاع
             $table->dateTime('arrival_time'); // وقت الوصول
-            $table->date('day'); // اليوم كتاريخ
+            // اليوم كتاريخ
             $table->string('trip_type'); // نوع الرحلة
             $table->string('status'); // الحالة
             $table->unsignedBigInteger('created_by'); // المستخدم الذي أنشأ السجل
