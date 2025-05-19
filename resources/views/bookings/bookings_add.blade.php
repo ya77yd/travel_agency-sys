@@ -16,7 +16,7 @@
         </div>
 
         <div class="card-body">
-            <form role="form" action="{{ route('bookings.store') }}" method="POST">
+            <form role="form" action="{{ route('bookings.store') }}" method="POST" outocomplete="off">
                 @csrf
                 <div class="row">
                     <!-- بيانات المورد، العميل والعملة -->
@@ -122,6 +122,21 @@
                                                     @foreach ($airports as $airport)
                                                         <option value="{{ $airport->id }}">
                                                             {{ $airport->name_ar }}-{{ $airport->code }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        @endif
+                                    </div>
+                                     <div class="col-md-4">
+                                        @if (isset($airlines))
+                                            <div class="form-group">
+                                                <label>الطيران:</label>
+                                                <select class="form-control select2" style="width: 100%;" id="airlie_id" name="travel_routes[0][airline_id]" required>
+                                                    <option value="">اختر</option>
+                                                    @foreach ($airlines as $airline)
+                                                        <option value="{{ $airline->id }}">
+                                                            {{ $airline->name_ar }}-{{ $airline->code }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -434,48 +449,48 @@
     // عند تحميل الصفحة، نقوم بتحديث الخيارات لكل قوائم المطارات
      
    
-  document.addEventListener('DOMContentLoaded', function () {
-    function updateAirportOptions() {
-      const airportSelects = document.querySelectorAll('select.select2');
-      let selectedValues = [];
+//   document.addEventListener('DOMContentLoaded', function () {
+//     function updateAirportOptions() {
+//       const airportSelects = document.querySelectorAll('select.select2');
+//       let selectedValues = [];
       
-      airportSelects.forEach(select => {
-        if (select.value.trim() !== '') {
-          selectedValues.push(select.value);
-        }
-      });
+//       airportSelects.forEach(select => {
+//         if (select.value.trim() !== '') {
+//           selectedValues.push(select.value);
+//         }
+//       });
       
-      airportSelects.forEach(select => {
-        let currentValue = select.value;
-        Array.from(select.options).forEach(option => {
-          // الخيار الفارغ متاح دائمًا
-          if (option.value.trim() === "") {
-            option.disabled = false;
-            return;
-          }
-          // تعطيل الخيار إذا كان مختاراً في قائمة أخرى
-          if (option.value !== currentValue && selectedValues.includes(option.value)) {
-            option.disabled = true;
-          } else {
-            option.disabled = false;
-          }
-        });
+//       airportSelects.forEach(select => {
+//         let currentValue = select.value;
+//         Array.from(select.options).forEach(option => {
+//           // الخيار الفارغ متاح دائمًا
+//           if (option.value.trim() === "") {
+//             option.disabled = false;
+//             return;
+//           }
+//           // تعطيل الخيار إذا كان مختاراً في قائمة أخرى
+//           if (option.value !== currentValue && selectedValues.includes(option.value)) {
+//             option.disabled = true;
+//           } else {
+//             option.disabled = false;
+//           }
+//         });
 
-        // إذا كنت تستخدم select2 قد تحتاج إلى تحديثه بعدها
-        if (typeof $(select).select2 === "function") {
-          $(select).trigger('change.select2');
-        }
-      });
-    }
+//         // إذا كنت تستخدم select2 قد تحتاج إلى تحديثه بعدها
+//         if (typeof $(select).select2 === "function") {
+//           $(select).trigger('change.select2');
+//         }
+//       });
+//     }
   
-    // إرفاق حدث التغيير لكل عنصر select يحمل الكلاس select2
-    const airportSelects = document.querySelectorAll('select.select2');
-    airportSelects.forEach(select => {
-      select.addEventListener('change', updateAirportOptions);
-    });
-    // استدعاء التحديث عند تحميل الصفحة
-    updateAirportOptions();
-  });
+//     // إرفاق حدث التغيير لكل عنصر select يحمل الكلاس select2
+//     const airportSelects = document.querySelectorAll('select.select2');
+//     airportSelects.forEach(select => {
+//       select.addEventListener('change', updateAirportOptions);
+//     });
+//     // استدعاء التحديث عند تحميل الصفحة
+//     updateAirportOptions();
+//   });
 
 </script>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Airlines;
 use App\Models\Airports;
 use App\Models\Tickets;
 use Illuminate\Support\Facades\DB;
@@ -36,13 +37,14 @@ class BookingsController extends Controller
      */
     public function create()
     {
+        $airlines = Airlines::all();
         $airports = Airports::all();
        $suppliers = Suppliers::all();
         $customers = Customers::all();
         $trips = Travelroutes::all();
         $currencies = Currencies::all();
         $bookings = Bookings::all();
-        return view('bookings.bookings_add', compact('suppliers', 'customers', 'trips', 'currencies', 'bookings','airports'));
+        return view('bookings.bookings_add', compact('suppliers', 'customers', 'trips', 'currencies', 'bookings','airports','airlines'));
     }
  
 
@@ -87,6 +89,7 @@ class BookingsController extends Controller
                             'stopover'       => isset($routeData['stopover']) ? $routeData['stopover'] : null,
                             'departure_time' => $routeData['departure_time'],
                             'arrival_time'   => $routeData['arrival_time'],
+                            'airline_id'     => $routeData['airline_id'],
                             'trip_type'      => $routeData['trip_type'],
                             'status'         => 'confirmed',
                             'created_by'     => $userId,
