@@ -20,7 +20,7 @@
                 @csrf
                 <div class="row">
                     <!-- بيانات المورد، العميل والعملة -->
-                    <div class="col-4">
+                    <div class="col-md-4">
                         @if (isset($suppliers))
                             <div class="form-group">
                                 <label>المورد:</label>
@@ -33,7 +33,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         @if (isset($customers))
                             <div class="form-group">
                                 <label>العميل:</label>
@@ -71,7 +71,6 @@
                         <div class="form-group">
                             <label for="">الرحلة:</label>
                             <select class="form-control" id="trip_type" name="trip_type" required>
-                                <option value="">اختر الرحلة</option>
                                 <option value="one_way">ذهاب فقط</option>
                                 <option value="round_trip">ذهاب وعودة</option>
                             </select>
@@ -80,7 +79,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="">تاريخ:</label>
-                            <input type="date" id="date" name="date" class="form-control" placeholder="تاريخ الحجز" autocomplete="one" required>
+                            <input type="date" id="date" name="date" class="form-control" placeholder="تاريخ الحجز" autocomplete="one" required value="<?php echo date('Y-m-d'); ?>">
                         </div>
                     </div>
                     <div class="col-3">
@@ -98,7 +97,7 @@
                             <!-- رحلة الذهاب -->
                             <div id="travelRoutesContainer">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-md-4">
                                         @if (isset($airports))
                                             <div class="form-group">
                                                 <label>من:</label>
@@ -113,7 +112,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-md-4">
                                         @if (isset($airports))
                                             <div class="form-group">
                                                 <label>إلى:</label>
@@ -170,11 +169,10 @@
                                             <input type="datetime-local" id="arrival_time" name="travel_routes[0][arrival_time]" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4" style="display: none;">
                                         <div class="form-group">
                                             <label>نوع الرحلة:</label>
-                                            <select class="form-control" id="trip_type_route" name="travel_routes[0][trip_type]" required>
-                                                <option value="">اختر</option>
+                                            <select class="form-control" id="trip_type_route" name="travel_routes[0][trip_type]" required >
                                                 <option value="going">ذهاب</option>
                                             </select>
                                         </div>
@@ -215,6 +213,21 @@
                                             </div>
                                         @endif
                                     </div>
+                                     <div class="col-md-4">
+                                        @if (isset($airlines))
+                                            <div class="form-group">
+                                                <label>الطيران:</label>
+                                                <select class="form-control select2" style="width: 100%;" id="airlie_id" name="travel_routes[1][airline_id]" required>
+                                                    <option value="">اختر</option>
+                                                    @foreach ($airlines as $airline)
+                                                        <option value="{{ $airline->id }}">
+                                                            {{ $airline->name_ar }}-{{ $airline->code }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        @endif
+                                    </div>
                                     <div class="col-4">
                                         @if (isset($airports))
                                             <div class="form-group">
@@ -242,11 +255,10 @@
                                             <input type="datetime-local" id="return_arrival_time" name="travel_routes[1][arrival_time]" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4" style="display: none;">
                                         <div class="form-group">
                                             <label>نوع الرحلة:</label>
-                                            <select class="form-control" id="return_trip_type" name="travel_routes[1][trip_type]">
-                                                <option value="">اختر</option>
+                                            <select class="form-control" id="return_trip_type" name="travel_routes[1][trip_type]" >
                                                 <option value="back">عودة</option>
                                             </select>
                                         </div>
@@ -263,7 +275,7 @@
                             <!-- صف بيانات التذكرة الافتراضي -->
                             <div id="ticketsContainer">
                                 <div class="row position-relative" id="ticketRow0" style="border:1px solid #ddd ;padding:0px;margin:0.5px;">
-                                    <div class="col-5">
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <label>اسم المسافر</label>
                                             <input type="text" name="tickets[0][name]" class="form-control" required>
@@ -382,11 +394,12 @@
         }
         var newTicketRow = document.createElement('div');
         newTicketRow.className = 'row position-relative';
-        newTicketRow.id = 'ticketRow' + ticketCount;
+        newTicketRow.id = 'ticketRow ' + ticketCount;
+        newTicketRow.style = "border:1px solid #ddd ;padding:0px;margin:1px;";
         newTicketRow.innerHTML = `
-            <div class="col-3">
+            <div class="col-md-5">
                 <div class="form-group">
-                    <label>اسم المسافر</label>
+                    <label> اسم المسافر${ticketCount+1} </label>
                     <input type="text" name="tickets[${ticketCount}][name]" class="form-control" required>
                 </div>
             </div>
