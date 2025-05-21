@@ -106,8 +106,10 @@ class BookingsController extends Controller
             $totalSalePrice = 0;
             $supplieraccount_id= Suppliers::where('id', $request->supplier_id)->value('account_id');       
             $customeraccount_id= Customers::where('id', $request->customer_id)->value('account_id');
-            $acc_supplier =Account_currencies::where('id', $supplieraccount_id)->value('account_id');
-            $acc_customer =Account_currencies::where('id', $customeraccount_id)->value('account_id');
+            $acc_supplier =Account_currencies::where('account_id', $supplieraccount_id)
+            ->where('currency_id',$request->currency)->value('id');
+            $acc_customer =Account_currencies::where('account_id', $customeraccount_id)
+            ->where('currency_id',$request->currency)->value('id');
             // حساب السعر الإجمالي وسعر البيع الإجمالي  
 
             // إنشاء سجلات التذاكر وحساب المجاميع
@@ -128,22 +130,25 @@ class BookingsController extends Controller
                     $totalPrice += $ticketData['price'];
                     $totalSalePrice += $ticketData['sale'];
                     // إضافة عملية مالية للدائن
-                    $financialOperation = new Financialoperation();
-                    $financialOperation->account_currency_id = $acc_supplier;
-                    $financialOperation->debit = $ticketData['price'];
-                    $financialOperation->credit = 0;
-                    $financialOperation->operation_type = $ticketData['tkt'];
-                    $financialOperation->operation_reference = $booking->id;
-                    $financialOperation->date = $request->date;
-                    $financialOperation->description = 'حجز تذكرة';
-                    $financialOperation->created_by = $userId;
-                    $financialOperation->updated_by = $userId;
-                    $financialOperation->save();
-
+                    $financialOperation = Financialoperation::create([
+                        'account_currency_id' => $acc_customer,
+                        'debit'               => $ticketData['price'],
+                        'credit'              => 0,
+                        'operation_type'      => 'تذكرة',
+                        'operation_reference' => $booking->id,
+                        'date'                => $request->date,
+                        'description'         => 'حجز تذكرة',
+                        'created_by'          => $userId,
+                        'updated_by'          => $userId,
+                    ]);
                     Log::debug('Created Financial Operation', ['operation_id' => $financialOperation->id]);
                     // إضافة عملية مالية للمدين
+                    
+
+                    
+                    // إضافة عملية مالية للمدين
                     $financialOperation = new Financialoperation();
-                    $financialOperation->account_currency_id = $acc_customer;
+                    $financialOperation->account_currency_id = $acc_supplier;
                     $financialOperation->debit = 0;
                     $financialOperation->credit = $ticketData['sale'];
                     $financialOperation->operation_type = 'تذكرة';
@@ -163,11 +168,12 @@ class BookingsController extends Controller
                 'price'      => $totalPrice,
                 'sale_price' => $totalSalePrice,
                 'updated_by' => $userId,
-                $customer_acc=Account_currencies::find($acc_supplier),
-                $supplier_acc=Account_currencies::find($acc_customer),
-                $customer_acc->debit = $totalSalePrice,
-                $supplier_acc->credit = $totalPrice,
+                $customer_acc=Account_currencies::find($acc_customer),
+                $supplier_acc=Account_currencies::find($acc_supplier),
+                $customer_acc->debtor = $totalSalePrice,
+                $supplier_acc->creditor = $totalPrice,
                 $customer_acc->save(),
+                $supplier_acc->save(),
                
                 
             ]);
