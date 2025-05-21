@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account_currencies;
 use App\Models\Airlines;
 use App\Models\Airports;
 use App\Models\Tickets;
@@ -10,6 +11,7 @@ use App\Models\Bookings;
 use App\Models\Customers;
 use App\Models\Suppliers;
 use App\Models\Currencies;
+use App\Models\Financialoperation;
 use App\Models\Travelroutes;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
@@ -102,8 +104,14 @@ class BookingsController extends Controller
 
             $totalPrice = 0;
             $totalSalePrice = 0;
+            $supplieraccount_id= Suppliers::where('id', $request->supplier_id)->value('account_id');       
+            $customeraccount_id= Customers::where('id', $request->customer_id)->value('account_id');
+            $acc_supplier =Account_currencies::where('id', $supplieraccount_id)->value('account_id');
+            $acc_customer =Account_currencies::where('id', $customeraccount_id)->value('account_id');
+            // حساب السعر الإجمالي وسعر البيع الإجمالي  
 
             // إنشاء سجلات التذاكر وحساب المجاميع
+
             if ($request->has('tickets')) {
                 foreach ($request->tickets as $ticketData) {
                     $ticket = Tickets::create([
@@ -119,6 +127,34 @@ class BookingsController extends Controller
                     Log::debug('Created Ticket', ['ticket_id' => $ticket->id]);
                     $totalPrice += $ticketData['price'];
                     $totalSalePrice += $ticketData['sale'];
+                    // إضافة عملية مالية للدائن
+                    $financialOperation = new Financialoperation();
+                    $financialOperation->account_currency_id = $acc_supplier;
+                    $financialOperation->debit = $ticketData['price'];
+                    $financialOperation->credit = 0;
+                    $financialOperation->operation_type = $ticketData['tkt'];
+                    $financialOperation->operation_reference = $booking->id;
+                    $financialOperation->date = $request->date;
+                    $financialOperation->description = 'حجز تذكرة';
+                    $financialOperation->created_by = $userId;
+                    $financialOperation->updated_by = $userId;
+                    $financialOperation->save();
+
+                    Log::debug('Created Financial Operation', ['operation_id' => $financialOperation->id]);
+                    // إضافة عملية مالية للمدين
+                    $financialOperation = new Financialoperation();
+                    $financialOperation->account_currency_id = $acc_customer;
+                    $financialOperation->debit = 0;
+                    $financialOperation->credit = $ticketData['sale'];
+                    $financialOperation->operation_type = 'تذكرة';
+                    $financialOperation->operation_reference = $booking->id;
+                    $financialOperation->date = $request->date;
+                    $financialOperation->description = 'حجز تذكرة';
+                    $financialOperation->created_by = $userId;
+                    $financialOperation->updated_by = $userId;
+                    $financialOperation->save();
+                    Log::debug('Created Financial Operation', ['operation_id' => $financialOperation->id]);
+
                 }
             }
 
@@ -127,6 +163,13 @@ class BookingsController extends Controller
                 'price'      => $totalPrice,
                 'sale_price' => $totalSalePrice,
                 'updated_by' => $userId,
+                $customer_acc=Account_currencies::find($acc_supplier),
+                $supplier_acc=Account_currencies::find($acc_customer),
+                $customer_acc->debit = $totalSalePrice,
+                $supplier_acc->credit = $totalPrice,
+                $customer_acc->save(),
+               
+                
             ]);
             Log::debug('Updated Booking Totals', [
                 'price'      => $totalPrice,
