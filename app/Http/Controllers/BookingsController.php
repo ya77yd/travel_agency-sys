@@ -97,6 +97,13 @@ class BookingsController extends Controller
                             'created_by'     => $userId,
                             'updated_by'     => $userId,
                         ]);
+                        if ($routeData['trip_type'] == 'going') {
+                             $going =$routeData['from']. ' \ ' . $routeData['stopover']. ' \ ' . $routeData['to'];
+                        }
+                       if ($routeData['trip_type'] == 'back') {
+                             $back ='\ '.$routeData['from']. ' \ ' . $routeData['stopover']. ' \ ' . $routeData['to'];
+                        }
+
                         Log::debug('Created Travel Route', ['route_id' => $route->id]);
                     }
                 }
@@ -137,7 +144,7 @@ class BookingsController extends Controller
                         'operation_type'      => 'تذكرة',
                         'operation_reference' => $booking->id,
                         'date'                => $request->date,
-                        'description'         => 'حجز تذكرة',
+                        'description'         => 'tkt-' . $ticketData['tkt'].' for- ' . $ticketData['name'].' - ' . $ticketData['age'],
                         'created_by'          => $userId,
                         'updated_by'          => $userId,
                     ]);
