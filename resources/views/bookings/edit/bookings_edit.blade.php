@@ -163,7 +163,7 @@
                                                         <label>توقف:</label>
                                                         <select class="form-control select2" style="width: 100%;"
                                                             id="customer_id" name="travel_routes[0][stopover]"
-                                                            required>
+                                                            >
                                                             <option value="">اختر مطار التوقف </option>
                                                             @foreach ($airports as $airport)
                                                                 <option value="{{ $airport->id }}"

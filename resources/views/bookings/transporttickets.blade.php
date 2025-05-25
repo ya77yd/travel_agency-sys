@@ -16,7 +16,7 @@
             <form role="form" action="{{ route('transporttickets.store') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> اسم المسافر</label>
@@ -24,7 +24,7 @@
                                 placeholder="اسم المسافر">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> رقم التذكرة</label>
@@ -32,7 +32,7 @@
                                 placeholder="رقم التذكرة">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> من</label>
@@ -40,7 +40,7 @@
                                 placeholder=" جهة الانطلاق">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> الى</label>
@@ -48,7 +48,7 @@
                                 placeholder="جهة الوصول">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> التأريخ</label>
@@ -56,7 +56,7 @@
                                 placeholder="التأريخ">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> تأريخ الرحلة</label>
@@ -64,7 +64,7 @@
                                 placeholder=" تأريخ الرحلة">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> سعر الشراء</label>
@@ -72,7 +72,7 @@
                                 placeholder=" سعر الشراء">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> سعر البيع</label>
@@ -80,7 +80,7 @@
                                 placeholder=" سعر البيع">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         @if (isset($currencies))
                             <div class="form-group">
@@ -94,7 +94,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         @if (isset($suppliers))
                             <div class="form-group">
@@ -108,7 +108,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         @if (isset($customers))
                             <div class="form-group">
@@ -122,7 +122,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <!-- text input -->
                         <div class="form-group">
                             <label>نوع الرحلة</label>
@@ -133,7 +133,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- text input -->
                         <div class="form-group">
                             <label for=""> تأريخ العودة</label>

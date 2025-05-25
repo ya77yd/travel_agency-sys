@@ -219,7 +219,7 @@
                                         @if (isset($airlines))
                                             <div class="form-group">
                                                 <label>الطيران:</label>
-                                                <select class="form-control select2" style="width: 100%;" id="airlie_id" name="travel_routes[1][airline_id]" required>
+                                                <select class="form-control select2" style="width: 100%;" id="airlie_id" name="travel_routes[1][airline_id]" >
                                                     <option value="">اختر</option>
                                                     @foreach ($airlines as $airline)
                                                         <option value="{{ $airline->id }}">
